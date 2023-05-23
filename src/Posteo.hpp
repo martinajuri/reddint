@@ -24,8 +24,21 @@ public:
            const string& titulo, const List<string>& participantes)
         : Publicacion(fecha, usuario, contenido, valoracion)
     {
-        this->titulo = titulo;
-        this->participantes = participantes;
+        this->fecha = fecha;
+        valoracion = 0;
+        participantes = new List<string>();
+
+        cout << "Usuario autor del post: ";
+        cin >> usuario;
+        cout << endl;
+
+        cout << "Titulo del post: ";
+        cin >> titulo;
+        cout << endl;
+
+        cout << "Contenido del post: ";
+        cin >> contenido;
+        cout << endl;
     }
     void comentar();
     void imprimirPosteo();

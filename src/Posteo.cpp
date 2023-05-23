@@ -25,6 +25,8 @@ Usuario Posteo::usuarioMasParticipativo()
 void Posteo::comentar()
 {
     // Implementación de lógica para agregar un comentario
+    
+
 }
 
 void Posteo::imprimirPosteo()

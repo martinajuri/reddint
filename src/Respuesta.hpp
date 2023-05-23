@@ -15,6 +15,16 @@ class Respuesta : public Publicacion
             : Publicacion(fecha, usuario, contenido, valoracion)
         {
             // Constructor de Respuesta que asigna los atributos heredados de Publicacion [GPT]
+            this-> fecha = fecha;
+            valoracion = 0;
+
+            cout << "Que usuario responde: ";
+            cin >> usuario;
+            cout << endl;
+
+            cout << "Respuesta: ";
+            cin >> contenido;
+            cout << endl;
         }
 };
 
