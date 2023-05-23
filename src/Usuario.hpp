@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "util\List.hpp"
 #include "Publicacion.hpp"
 
