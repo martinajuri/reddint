@@ -1,2 +1,2 @@
 #include <iostream>
-#include "util\ArbolBinario.hpp"
+#include "util\Arbol.hpp"

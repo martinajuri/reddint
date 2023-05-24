@@ -11,27 +11,32 @@ class Nodo
 {
 private:
     T *dato;        // Puntero al dato del nodo
-    Nodo *next;     // Puntero al siguiente nodo
+    Nodo * hijoDer;
+    Nodo * hijoIzq;     // Puntero al siguiente nodo
 public:
     Nodo() {
-        next = NULL;
+        hijoDer = NULL;
+        hijoIzq = NULL;
         dato = NULL;
     };
     
     Nodo(T *a){
+        hijoDer = NULL;
+        hijoIzq = NULL;
         dato = a;
-        next = NULL;
     };
     
     //setters       
     void setDato(T *a) { dato = a; };    
-    void setNext(Nodo *n) { next = n; }; 
-
+    void setHijoDer(Nodo *n) { hijoDer = n; }; 
+    void setHijoIzq(Nodo *n) { hijoIzq = n; }; 
     //getters
     T *getDato() { return dato; };       
-    Nodo *getNext() { return next; };
-
+    Nodo *getHijoDer() { return hijoDer; };
+    Nodo *getHijoIzq() { return hijoIzq; };
+    
     //devuelve si el nodo no tiene siguiente nodo apuntado
-    bool isEmpty() { return next == NULL; }
+    bool isDerEmpty() { return hijoDer == NULL; }
+    bool isIzqEmpty() { return hijoIzq == NULL; }
 };
 #endif
