@@ -6,7 +6,7 @@ using namespace std;
 #ifndef POSTEO_CPP
 #define POSTEO_CPP
 
-Comentario Posteo::comentarioMasVotado()
+Contenido Posteo::comentarioMasVotado()
 {
     // Implementación de lógica para encontrar el comentario más votado
     // Retorna el comentario más votado
@@ -16,13 +16,6 @@ Usuario Posteo::usuarioMasParticipativo()
 {
     // Implementación de lógica para encontrar el usuario más participativo
     // Retorna el nombre del usuario más participativo
-}
-
-void Posteo::comentar()
-{
-    // Implementación de lógica para agregar un comentario
-    
-
 }
 
 void Posteo::imprimirPosteo()

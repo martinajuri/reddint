@@ -9,30 +9,29 @@ using namespace std;
 #ifndef POSTEO_HPP
 #define POSTEO_HPP
 
-class Posteo : public Publicacion
+class Posteo : public Contenido
 {
     private:
         string titulo;
         List<Usuario> participantes;
 
-        Comentario comentarioMasVotado();
+        Contenido comentarioMasVotado();
         Usuario usuarioMasParticipativo();
 
     public:
-        Posteo(Fecha fecha, Usuario usuario, string contenido, string titulo)
-            : Publicacion(fecha, usuario, contenido){
+        Posteo(Fecha fecha, Usuario usuario, string cuerpo, string titulo)
+            : Contenido(fecha, usuario, cuerpo){
                 this->titulo=titulo;
             };
 
-        Posteo():Publicacion(){};
+        Posteo():Contenido(){};
 
         void imprimir()
         {
-            cout << "titulo "<< titulo << endl << "contenido " << contenido << endl << "Por: ";
+            cout << "titulo "<< titulo << endl << "cuerpo " << cuerpo << endl << "Por: ";
             usuario.imprimir();
         };
         void imprimirPosteo();
 };
-
 
 #endif
