@@ -17,26 +17,14 @@ class Publicacion
         int valoracion;
 
     public:
-        Publicacion(Fecha fecha, Usuario usuario,string contenido){
+        Publicacion(Fecha fecha, Usuario usuario, string contenido)
+        {
             this-> fecha = fecha;
             this->usuario = usuario;
             this->contenido = contenido;
             valoracion = 0;
-            
         };
-        //contructor que pide todo por consola
-        Publicacion(){
-            this->fecha = Fecha("a");
-            this->usuario = Usuario(2);
-            
-            string contenido;
-            cout << "Respuesta: ";
-            cin >> contenido;
-            cout << endl;
-            this->contenido = contenido;
-
-            valoracion = 0;
-        };
+        Publicacion(){};
 
         void meGusta(){valoracion++;};
         void nomeGusta(){valoracion--;};

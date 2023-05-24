@@ -14,22 +14,13 @@ class Fecha
 
     public:
         Fecha(int d, int m, int a) {
+            //validar fecha
             dia = d;
             mes = m;
             anio = a;
         }
         Fecha(){}
-        Fecha(string ab){
-            int d, m, a;
-            cout << "Ingrese dia: ";
-            cin >> d;
-            cout << "Ingrese mes: ";
-            cin >> m;
-            cout << "Ingrese anio: ";
-            cin >> a;
-            
-            dia = d; mes = m; anio = a;
-        };
+        
         
         //Devuelve true si la fecha es mayor a la ingresada por parametro
         bool esMayor(Fecha otraFecha) {

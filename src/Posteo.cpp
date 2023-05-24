@@ -1,9 +1,5 @@
 #include <iostream>
 #include "Posteo.hpp"
-#include "Publicacion.hpp"
-#include "Comentario.hpp"
-#include "Usuario2.hpp"
-#include "util\List.hpp"
 
 using namespace std;
 
