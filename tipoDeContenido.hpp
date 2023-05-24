@@ -1,0 +1,10 @@
+#ifndef TIPODECONTENIDO_HPP
+#define TIPODECONTENIDO_HPP
+
+enum TipoDeContenido {
+    PUBLICACION,
+    COMENTARIO,
+    RESPUESTA
+};
+
+#endif // TIPODECONTENIDO_HPP
