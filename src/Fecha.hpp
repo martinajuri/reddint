@@ -18,7 +18,18 @@ class Fecha
             mes = m;
             anio = a;
         }
-        Fecha(){};
+        Fecha(){}
+        Fecha(string ab){
+            int d, m, a;
+            cout << "Ingrese dia: ";
+            cin >> d;
+            cout << "Ingrese mes: ";
+            cin >> m;
+            cout << "Ingrese anio: ";
+            cin >> a;
+            
+            dia = d; mes = m; anio = a;
+        };
         
         //Devuelve true si la fecha es mayor a la ingresada por parametro
         bool esMayor(Fecha otraFecha) {
@@ -38,6 +49,7 @@ class Fecha
                 return false;
         }
 
+        void imprimir(){cout<<dia<<"/"<<mes<<"/"<<anio<<endl;}
 };
 
 #endif

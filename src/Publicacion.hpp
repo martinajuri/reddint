@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Fecha.hpp"
-#include "Usuario.hpp"
+#include "Usuario2.hpp"
 
 using namespace std;
 
@@ -24,6 +24,20 @@ class Publicacion
             valoracion = 0;
             
         };
+        //contructor que pide todo por consola
+        Publicacion(){
+            this->fecha = Fecha("a");
+            this->usuario = Usuario(2);
+            
+            string contenido;
+            cout << "Respuesta: ";
+            cin >> contenido;
+            cout << endl;
+            this->contenido = contenido;
+
+            valoracion = 0;
+        };
+
         void meGusta(){valoracion++;};
         void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};

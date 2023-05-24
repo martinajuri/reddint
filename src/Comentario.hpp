@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Publicacion.hpp"
+#include "Usuario2.hpp"
 
 using namespace std;
 
@@ -9,21 +10,21 @@ using namespace std;
 class Comentario : public Publicacion
 {
 public:
-    Comentario(const Fecha& fecha, const Usuario& usuario, const string& contenido, int valoracion)
-        : Publicacion(fecha, usuario, contenido, valoracion){// Constructor de Comentario que asigna los atributos heredados de Publicacion
+    // Constructor de Comentario que asigna los atributos heredados de Publicacion
+    Comentario(Fecha fecha, Usuario usuario, string contenido): Publicacion(fecha, usuario, contenido){};
+    Comentario(Fecha fecha, Usuario usuario):Publicacion(fecha, usuario, "")
+    {
+        cout << "Usuario que comenta: ";
+        usuario.imprimir();
+        cout << endl;
 
-        this->fecha = fecha;
-        valoracion = 0;
-
-        cout >> "Usuario que comenta: ";
-        cin << usuario;
-        cout >> endl;
-
-        cout >> "Comentario: ";
-        cin << contenido;
-        cout >> endl;
-
-        }
+        cout << "Comentario: ";
+        cin >> contenido;
+        cout << endl;
+        this->contenido=contenido;
+    }
+    //contructor que pide todo por consola
+    Comentario():Publicacion(){};
 
     void responder();
 };

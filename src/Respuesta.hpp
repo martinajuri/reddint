@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Publicacion.hpp"
 #include "Fecha.hpp"
-#include "Usuario.hpp"
+#include "Usuario2.hpp"
 
 using namespace std;
 
@@ -12,17 +12,12 @@ class Respuesta : public Publicacion
 {
     public:
         Respuesta(Fecha fecha, Usuario usuario, string contenido)
-            : Publicacion(fecha, usuario, contenido, 0){};
+            : Publicacion(fecha, usuario, contenido){};
         
-        Respuesta(Fecha fecha, Usuario usuario):Publicacion(fecha, usuario, "", 0)
+        // Constructor que pide contenido por consola
+        Respuesta(Fecha fecha, Usuario usuario): Publicacion(fecha, usuario, "")
         {
-            /* Constructor de Respuesta que asigna los atributos heredados de Publicacion 
-                Pide informacion por consola
-            */
-            this-> fecha = fecha;
-            valoracion = 0;
-
-            cout << "Que usuario responde: ";
+            cout << "Usuario que responde: ";
             usuario.imprimir();
             cout << endl;
 
@@ -31,6 +26,8 @@ class Respuesta : public Publicacion
             cout << endl;
             this->contenido=contenido;
         };
+        //Constructor que pide toda la info por consola
+        Respuesta():Publicacion(){};
         
 };
 
