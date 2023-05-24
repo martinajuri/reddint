@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Fecha.hpp"
 #include "Usuario.hpp"
-#include "Posteo.hpp"
 
 
 using namespace std;
@@ -11,6 +10,4 @@ int main(){
     fecha->imprimir();
     Usuario* usuario1 = new Usuario("kp");
     usuario1->imprimir();
-    Posteo* posteo1 = new Posteo(*fecha, *usuario1, "q onda wacho","Buen dia");
-    posteo1->imprimir();
 };

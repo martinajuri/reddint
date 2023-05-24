@@ -1,9 +1,7 @@
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
 #include "ArbolBinario.hpp"
 using namespace std;
-
+#ifndef ARBOLBINARIO_C
+#define ARBOLBINARIO_C
 
 
 template <class T> void ArbolBinario<T>::rid(Nodo<T>* aux)
@@ -26,6 +24,30 @@ template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
     }
 }
 
-template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
-
+template <class T> void ArbolBinario<T>:: postear(Nodo<T>* raizAux, Posteo* newPost)
+{
+    if(raizAux == NULL)
+    {
+        raizAux = new Nodo<T>(newPost);
+    }
+    else
+    {
+        postear(raizAux->getHijoDer(), newPost);
+    }
+}
+template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Posteo* postAComentar, Contenido* newComentario)
+{
+    if(raizAux->getDato() == postAComentar)
+    {
+           if(raizAux->getHijoIzq() == NULL)
+        {
+        raizAux->setHijoIzq(new Nodo<T>(newComentario));
+        }
+        else
+        {
+        postear(raizAux->getHijoDer(), newPost);
+        } 
+    }
+}
+#endif
 

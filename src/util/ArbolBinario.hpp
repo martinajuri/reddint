@@ -1,10 +1,12 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include "Contenido.hpp"
 #include "Nodo.hpp"
 
 using namespace std;
-
+#ifndef ARBOLBINARIO_H
+#define ARBOLBINARIO_H
 
 template <class T> class ArbolBinario {
 private:
@@ -16,12 +18,11 @@ private:
 
 public:
     ArbolBinario() { raiz = NULL; };
-    void Postear();
-    void Comentar();
-    void Responder();
+    void crearContenido();
+    void buscar(Nodo<>);
     void RID() { rid(raiz); }
     void VerArbol() { show(raiz, 0); }
     void Borrar(T x) { borrar(raiz, x); }
 
 };
-
+#endif

@@ -2,6 +2,8 @@
 #include <string>
 #include "Fecha.hpp"
 #include "Usuario.hpp"
+#include "tipoDeContenido.hpp"
+#include "util\List.hpp"
 
 using namespace std;
 
@@ -17,24 +19,27 @@ class Contenido
         int valoracion;
         string titulo;
         List<Usuario> participantes;
+        TipoDeContenido tipo;
 
         Contenido comentarioMasVotado();
         Usuario usuarioMasParticipativo();
 
     public:
-        Contenido(Fecha fecha, Usuario usuario, string cuerpo)
+        Contenido(Fecha fecha, Usuario usuario, string cuerpo, TipoDeContenido tipo)
         {
             this-> fecha = fecha;
             this->usuario = usuario;
             this->cuerpo = cuerpo;
+            this->tipo = tipo;
             valoracion = 0;
         };
-        Contenido(Fecha fecha, Usuario usuario, string cuerpo, string titulo)
+        Contenido(Fecha fecha, Usuario usuario, string cuerpo, string titulo, TipoDeContenido tipo)
         {
             this->titulo = titulo;
             this->fecha = fecha;
             this->usuario = usuario;
             this->cuerpo = cuerpo;
+            this->tipo = tipo;
             valoracion = 0;
         };
         Contenido(){};
