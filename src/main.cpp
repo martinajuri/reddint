@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Fecha.hpp"
-#include "Usuario2.hpp"
+#include "Usuario.hpp"
 #include "Posteo.hpp"
 
 
