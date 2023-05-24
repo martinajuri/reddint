@@ -10,16 +10,24 @@ using namespace std;
 
 class Publicacion
 {
-    private:
+    protected:
         Fecha fecha;
         Usuario usuario;
-        long string contenido;
+        string contenido;
         int valoracion;
 
     public:
+        Publicacion(Fecha fecha, Usuario usuario,string contenido){
+            this-> fecha = fecha;
+            this->usuario = usuario;
+            this->contenido = contenido;
+            valoracion = 0;
+            
+        };
         void meGusta(){valoracion++;};
-        void nomeGusta(){valoracion..;};
+        void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};
+        void imprimir(){};
 };
 
 #endif

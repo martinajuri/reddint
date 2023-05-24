@@ -18,7 +18,8 @@ class Fecha
             mes = m;
             anio = a;
         }
-
+        Fecha(){};
+        
         //Devuelve true si la fecha es mayor a la ingresada por parametro
         bool esMayor(Fecha otraFecha) {
             if (anio > otraFecha.anio)

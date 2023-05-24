@@ -11,21 +11,27 @@ using namespace std;
 class Respuesta : public Publicacion
 {
     public:
-        Respuesta(const Fecha& fecha, const Usuario& usuario, const string& contenido, int valoracion)
-            : Publicacion(fecha, usuario, contenido, valoracion)
+        Respuesta(Fecha fecha, Usuario usuario, string contenido)
+            : Publicacion(fecha, usuario, contenido, 0){};
+        
+        Respuesta(Fecha fecha, Usuario usuario):Publicacion(fecha, usuario, "", 0)
         {
-            // Constructor de Respuesta que asigna los atributos heredados de Publicacion [GPT]
+            /* Constructor de Respuesta que asigna los atributos heredados de Publicacion 
+                Pide informacion por consola
+            */
             this-> fecha = fecha;
             valoracion = 0;
 
             cout << "Que usuario responde: ";
-            cin >> usuario;
+            usuario.imprimir();
             cout << endl;
 
             cout << "Respuesta: ";
             cin >> contenido;
             cout << endl;
-        }
+            this->contenido=contenido;
+        };
+        
 };
 
 #endif

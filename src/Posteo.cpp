@@ -32,8 +32,12 @@ void Posteo::comentar()
 void Posteo::imprimirPosteo()
 {
     cout << "Título: " << titulo << endl;
-    cout << "Comentario más votado: " << comentarioMasVotado().imprimir() << endl;
-    cout << "Usuario más participativo: " << usuarioMasParticipativo().imprimir() << endl;
+    cout << "Comentario más votado: "; 
+    comentarioMasVotado().imprimir();
+    cout<< endl;
+    cout << "Usuario más participativo: ";
+    usuarioMasParticipativo().imprimir();
+    cout << endl;
     cout << "Valoración: " << getValoracion() << endl;
 }
 

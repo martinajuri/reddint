@@ -2,6 +2,9 @@
 #include <string>
 #include "util\List.hpp"
 #include "Publicacion.hpp"
+#include "Posteo.hpp"
+#include "Comentario.hpp"
+#include "Respuesta.hpp"
 
 using namespace std;
 
@@ -11,13 +14,13 @@ using namespace std;
 class Usuario
 {
     private:
-    string nombre;
-    List<Publicacion> participaciones;
+        string nombre;
+        List<Publicacion*> participaciones;
 
-    void ordenarParticipaciones() {
-        // Implementación de ordenación de la Lista de participaciones 
-        // Puedes utilizar algoritmos de ordenación como sort [GPT]
-    }
+        void ordenarParticipaciones() {
+            // Implementación de ordenación de la Lista de participaciones 
+            // Puedes utilizar algoritmos de ordenación como sort [GPT]
+        }
 
     public:
         Usuario(string nombre) { this->nombre = nombre;}
@@ -33,7 +36,7 @@ class Usuario
         }
 
         void agregarParticipacion(Publicacion participacion) {
-            participaciones.add(participacion);
+            participaciones.add(participacion*);
         }
         void imprimir(){
             cout << nombre;
