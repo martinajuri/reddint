@@ -1,24 +1,26 @@
 #include <iostream>
-#include "Posteo.hpp"
+#include <string>
+#include "Contenido.hpp"
+#include "Usuario.hpp"
+#include "util\List.hpp"
 
 using namespace std;
+#ifndef Contenido_CPP
+#define Contenido_CPP
 
-#ifndef POSTEO_CPP
-#define POSTEO_CPP
-
-Contenido Posteo::comentarioMasVotado()
+Contenido Contenido::comentarioMasVotado()
 {
     // Implementación de lógica para encontrar el comentario más votado
     // Retorna el comentario más votado
-}
+};
 
-Usuario Posteo::usuarioMasParticipativo()
+Usuario Contenido::usuarioMasParticipativo()
 {
     // Implementación de lógica para encontrar el usuario más participativo
     // Retorna el nombre del usuario más participativo
 }
 
-void Posteo::imprimirPosteo()
+void Contenido::imprimirPosteo()
 {
     cout << "Título: " << titulo << endl;
     cout << "Comentario más votado: "; 
@@ -29,5 +31,4 @@ void Posteo::imprimirPosteo()
     cout << endl;
     cout << "Valoración: " << getValoracion() << endl;
 }
-
 #endif
