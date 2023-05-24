@@ -24,7 +24,7 @@ template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
     }
 }
 
-template <class T> void ArbolBinario<T>:: postear(Nodo<T>* raizAux, Posteo* newPost)
+template <class T> void ArbolBinario<T>:: agregar(Nodo<T>* raizAux, Contenido* newPost)
 {
     if(raizAux == NULL)
     {
@@ -32,22 +32,77 @@ template <class T> void ArbolBinario<T>:: postear(Nodo<T>* raizAux, Posteo* newP
     }
     else
     {
-        postear(raizAux->getHijoDer(), newPost);
+       agregar(raizAux->getHijoDer(), newPost);
     }
 }
-template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Posteo* postAComentar, Contenido* newComentario)
+template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    if(raizAux->getDato() == postAComentar)
+    if(buscarPost(raizAux, postAComentar))
     {
-           if(raizAux->getHijoIzq() == NULL)
-        {
-        raizAux->setHijoIzq(new Nodo<T>(newComentario));
-        }
-        else
-        {
-        postear(raizAux->getHijoDer(), newPost);
-        } 
+        agregar(raizAux->getHijoIzq(), newComentario);
+    }
+    else if(raizAux->getDato() == NULL)
+    {
+        cout << "No existe el post a comentar" << endl;
+    }
+    else
+    {
+        comentar(raizAux->getHijoDer(), postAComentar, newComentario);
     }
 }
+
+template <class T> void ArbolBinario<T>:: responder(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
+{
+    if(buscarPost(raizAux, postAComentar))
+    {
+        comentar(raizAux->getHijoIzq(), comentarioAResponder, newRespuesta);
+    }
+    else if(raizAux->getDato() == NULL)
+    {
+        cout << "No es posible responder" << endl;
+    }
+    else
+    {
+        responder(raizAux->getHijoDer(), postAComentar, comentarioAResponder, newRespuesta);
+    }
+}
+
+
+template <class T> Nodo<T>* buscarPost(Nodo<T>* raizAux ,Contenido* post){
+
+    if(raizAux->getDato() == post){
+        return raizAux;
+    }
+    else if (raizAux == NULL){
+        return NULL;
+    }
+    else{
+        return buscarPost(raizAux->getHijoDer(), post);
+    }
+
+}
+
+template <class T> void borrarPost(Nodo<T>*& raizAux ,Contenido* post){
+
+    if(raizAux->getDato() == post){
+       if(raizAux->getHijoDer() == NULL)delete raizAux;
+       else{
+
+        Nodo<T>* nodoAux = raizAux->getHijoDer();
+        raizAux = nodoAux;
+        delete nodoAux; // queda el puntero del post borrado apuntando a su derecha
+
+       }
+    }
+    else if (raizAux == NULL){
+        cout << "No se encontro el post" << endl;
+    }
+    else{
+        borrarPost(raizAux->getHijoDer(), post);
+    }
+
+}
+
+
 #endif
 
