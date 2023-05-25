@@ -1,5 +1,7 @@
 #include "ArbolBinario.hpp"
+
 using namespace std;
+
 #ifndef ARBOLBINARIO_C
 #define ARBOLBINARIO_C
 
@@ -37,7 +39,7 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>* raizAux, Contenido* n
 }
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    if(buscarPost(raizAux, postAComentar))
+    if(raizAux->getDato==postAComentar)
     {
         agregar(raizAux->getHijoIzq(), newComentario);
     }
@@ -53,7 +55,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Contenido* 
 
 template <class T> void ArbolBinario<T>:: responder(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
-    if(buscarPost(raizAux, postAComentar))
+    if(raizAux->getDato==postAComentar)
     {
         comentar(raizAux->getHijoIzq(), comentarioAResponder, newRespuesta);
     }
@@ -68,13 +70,13 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>* raizAux, Contenido*
 }
 
 
-template <class T> Nodo<T>* buscarPost(Nodo<T>* raizAux ,Contenido* post){
+template <class T> bool ArbolBinario<T>::buscarPost(Nodo<T>* raizAux ,Contenido* post){
 
     if(raizAux->getDato() == post){
-        return raizAux;
+        return true;
     }
     else if (raizAux == NULL){
-        return NULL;
+        return false;
     }
     else{
         return buscarPost(raizAux->getHijoDer(), post);
@@ -82,16 +84,15 @@ template <class T> Nodo<T>* buscarPost(Nodo<T>* raizAux ,Contenido* post){
 
 }
 
-template <class T> void borrarPost(Nodo<T>*& raizAux ,Contenido* post){
+template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido* post){
 
     if(raizAux->getDato() == post){
-       if(raizAux->getHijoDer() == NULL)delete raizAux;
-       else{
-
-        Nodo<T>* nodoAux = raizAux->getHijoDer();
-        raizAux = nodoAux;
-        delete nodoAux; // queda el puntero del post borrado apuntando a su derecha
-
+       if(raizAux->getHijoDer() == NULL) delete raizAux;
+       else
+       {
+            Nodo<T>* nodoAux = raizAux->getHijoDer();
+            raizAux = nodoAux;
+            delete nodoAux; // queda el puntero del post borrado apuntando a su derecha
        }
     }
     else if (raizAux == NULL){
@@ -100,7 +101,6 @@ template <class T> void borrarPost(Nodo<T>*& raizAux ,Contenido* post){
     else{
         borrarPost(raizAux->getHijoDer(), post);
     }
-
 }
 
 

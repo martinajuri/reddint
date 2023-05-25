@@ -1,8 +1,7 @@
-#include <cstdlib>
 #include <iostream>
-#include <sstream>
-#include "Contenido.hpp"
+#include "..\Contenido.hpp"
 #include "Nodo.hpp"
+
 
 using namespace std;
 #ifndef ARBOLBINARIO_H
@@ -11,18 +10,19 @@ using namespace std;
 template <class T> class ArbolBinario {
 private:
     Nodo<T> * raiz, * q;
-    void ArbolBusq(T x, Nodo<T>*& nuevo);
     void rid(Nodo<T>* aux);
     void show(Nodo<T>* aux, int n);
-    void borrar(Nodo<T>*& p, T x);
 
 public:
     ArbolBinario() { raiz = NULL; };
-    void crearContenido();
-    void buscar(Nodo<>);
+    void crearContenido(){};
     void RID() { rid(raiz); }
     void VerArbol() { show(raiz, 0); }
-    void Borrar(T x) { borrar(raiz, x); }
-
+    void responder(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta);
+    void comentar(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* newComentario);
+    void agregar(Nodo<T>* raizAux, Contenido* newPost);
+    void Agregar(Contenido*newPost){agregar(raiz,newPost);}
+    bool buscarPost(Nodo<T>* raizAux ,Contenido* post);
+    void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
 };
 #endif

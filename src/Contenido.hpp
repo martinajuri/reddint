@@ -13,19 +13,19 @@ using namespace std;
 class Contenido
 {
     protected:
-        Fecha fecha;
-        Usuario usuario;
+        Fecha* fecha;
+        Usuario* usuario;
         string cuerpo;
         int valoracion;
         string titulo;
-        List<Usuario> participantes;
+        //List<Usuario> participantes;
         TipoDeContenido tipo;
 
         Contenido comentarioMasVotado();
         Usuario usuarioMasParticipativo();
 
     public:
-        Contenido(Fecha fecha, Usuario usuario, string cuerpo, TipoDeContenido tipo)
+        Contenido(Fecha* fecha, Usuario* usuario, string cuerpo, TipoDeContenido tipo)
         {
             this-> fecha = fecha;
             this->usuario = usuario;
@@ -33,7 +33,7 @@ class Contenido
             this->tipo = tipo;
             valoracion = 0;
         };
-        Contenido(Fecha fecha, Usuario usuario, string cuerpo, string titulo, TipoDeContenido tipo)
+        Contenido(Fecha* fecha, Usuario* usuario,  string titulo, string cuerpo, TipoDeContenido tipo)
         {
             this->titulo = titulo;
             this->fecha = fecha;
@@ -41,13 +41,20 @@ class Contenido
             this->cuerpo = cuerpo;
             this->tipo = tipo;
             valoracion = 0;
+
         };
         Contenido(){};
 
         void meGusta(){valoracion++;};
         void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};
-        void imprimir(){};
+        void imprimir()
+        {
+            cout<<"-------------------------"<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
+            usuario->imprimir();
+            fecha->imprimir();
+            cout<<"-------------------------"<<endl;  
+        };
         void imprimirPosteo();
 };
 
