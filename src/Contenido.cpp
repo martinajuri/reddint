@@ -27,7 +27,7 @@ void Contenido::imprimirPosteo()
     comentarioMasVotado().imprimir();
     cout<< endl;
     cout << "Usuario más participativo: ";
-    usuarioMasParticipativo().imprimir();
+    usuarioMasParticipativo().imprimirU();
     cout << endl;
     cout << "Valoración: " << getValoracion() << endl;
 }
