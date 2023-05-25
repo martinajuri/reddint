@@ -56,6 +56,7 @@ class Contenido
             cout<<"-------------------------"<<endl;  
         };
         void imprimirPosteo();
+        explicit operator string();
 };
 
 #endif

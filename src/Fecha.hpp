@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 #ifndef FECHA_HPP
@@ -54,6 +54,7 @@ class Fecha
         }
 
         void imprimir(){cout<<dia<<"/"<<mes<<"/"<<anio<<endl;}
+      //  string getString(){return string(dia) + string(mes) + anio;}  
 };
 
 #endif

@@ -10,7 +10,7 @@ template <class T>
 class Nodo
 {
 private:
-    T* dato;        
+    T dato;        
     Nodo* hijoDer;
     Nodo* hijoIzq;   
 public:
@@ -20,18 +20,18 @@ public:
         dato = NULL;
     };
     
-    Nodo(T *a){
+    Nodo(T a){
         hijoDer = NULL;
         hijoIzq = NULL;
         dato = a;
     };
     
     //setters       
-    void setDato(T *a) { dato = a; };    
+    void setDato(T a) { dato = a; };    
     void setHijoDer(Nodo *n) { hijoDer = n; }; 
     void setHijoIzq(Nodo *n) { hijoIzq = n; }; 
     //getters
-    T *getDato() { return dato; };       
+    T getDato() { return dato; };       
     Nodo *getHijoDer() { return hijoDer; };
     Nodo *getHijoIzq() { return hijoIzq; };
     

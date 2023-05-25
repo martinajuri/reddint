@@ -31,4 +31,18 @@ void Contenido::imprimirPosteo()
     cout << endl;
     cout << "Valoración: " << getValoracion() << endl;
 }
+Contenido :: operator string()
+{   
+    string mensaje;
+    if (tipo == PUBLICACION)
+    {
+       // mensaje = titulo + string("\n") + usuario->getNombre() + " " + fecha + string("");
+    }
+    else
+    {
+        
+    }
+
+return mensaje;
+}
 #endif

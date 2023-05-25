@@ -10,8 +10,11 @@ using namespace std;
 template <class T> class ArbolBinario {
 private:
     Nodo<T> *raiz;
-    void postear(T dato*; nodo<T>*&);
+    void postear(T dato, Nodo<T>* raizPivote);
 public:
-    void Postear(T dato*);
-}
+    ArbolBinario(){raiz = nullptr;}
+    void Postear(T dato);
+    void imprimirPrimerNivel(Nodo<T>* raizPivote);
+    void ImprimirPrimerNivel();
+};
 #endif
