@@ -6,25 +6,6 @@ using namespace std;
 #define ARBOLBINARIO_C
 
 
-template <class T> void ArbolBinario<T>::rid(Nodo<T>* aux)
-{
-    if (aux != NULL) {
-        cout << "\n" << aux->info;
-        rid(aux->izq);
-        rid(aux->der);
-    }
-}
-
-template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
-{
-    int i;
-    if (aux != NULL) {                      //OjO este es un recorrido dri
-        show(aux->der, n + 1);
-        for (i = 1; i <= n; i++) cout << "     ";
-        cout << aux->info << "\n";
-        show(aux->izq, n + 1);
-    }
-}
 
 template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* newPost)
 {
@@ -76,26 +57,25 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
 
 template <class T> bool ArbolBinario<T>::buscarPost(Nodo<T>* raizAux ,Contenido* post){
 
-    if(raizAux->getDato() == post){
+    if(raizAux->dato == post){
         return true;
     }
     else if (raizAux == NULL){
-        return false;
-    }
+        return false;    }
     else{
-        return buscarPost(raizAux->getHijoDer(), post);
+        return buscarPost(raizAux->hijoDer, post);
     }
 
 }
 
 template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido* post){
 
-    if(raizAux->getDato() == post){
-       if(raizAux->getHijoDer() == NULL) delete raizAux;
+    if(raizAux->dato == post){
+       if(raizAux->hijoDer == NULL) delete raizAux;
        else
        {
-            Nodo<T>* nodoAux = raizAux->getHijoDer();
-            raizAux = nodoAux;
+            nodoAux = raizAux;
+            raizAux = nodoAux->hijoDer;
             delete nodoAux; // queda el puntero del post borrado apuntando a su derecha
        }
     }
@@ -103,9 +83,10 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
         cout << "No se encontro el post" << endl;
     }
     else{
-        borrarPost(raizAux->getHijoDer(), post);
+        borrarPost(raizAux->hijoDer, post);
     }
 }
+
 template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 {
 
