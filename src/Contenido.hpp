@@ -51,8 +51,8 @@ class Contenido
         void imprimir()
         {
             cout<<"-------------------------"<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
-            usuario->imprimir();
-            fecha->imprimir();
+            usuario->imprimirU();
+            fecha->imprimirF();
             cout<<"-------------------------"<<endl;  
         };
         void imprimirPosteo();
