@@ -15,17 +15,6 @@ template <class T> void ArbolBinario<T>::rid(Nodo<T>* aux)
     }
 }
 
-// template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
-// {
-//     int i;
-//     if (aux != NULL) {                      //OjO este es un recorrido dri
-//         show(aux->der, n + 1);
-//         for (i = 1; i <= n; i++) cout << "     ";
-//         cout << aux->info << "\n";
-//         show(aux->izq, n + 1);
-//     }
-// }
-
 template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
 {
     int i;
@@ -117,7 +106,7 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
         borrarPost(raizAux->getHijoDer(), post);
     }
 }
-template <class T> void ArbolBinario<T>::imprimir(Nodo<T>* raizAux)
+template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 {
 
     if (raizAux != NULL) {

@@ -13,12 +13,12 @@ public:
     T *dato;        // Puntero al dato del nodo
     Nodo * hijoDer;
     Nodo * hijoIzq;     // Puntero al siguiente nodo
-// public:
-//     Nodo() {
-//         hijoDer = NULL;
-//         hijoIzq = NULL;
-//         dato = NULL;
-//     };
+ public:
+     Nodo() {
+         hijoDer = NULL;
+         hijoIzq = NULL;
+         dato = NULL;
+     };
     
     Nodo(T *a){
         hijoDer = NULL;
