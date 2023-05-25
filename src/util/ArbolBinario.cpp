@@ -41,35 +41,35 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
         raizAux->hijoDer = new Nodo<Contenido>(newPost);
     }
 }
-template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* newComentario)
+template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    if(raizAux->getDato==postAComentar)
+    if(raizAux->dato == postAComentar)
     {
-        agregar(raizAux->getHijoIzq(), newComentario);
+        agregar(raizAux->hijoIzq, newComentario);
     }
-    else if(raizAux->getDato() == NULL)
+    else if(raizAux->dato == NULL)
     {
         cout << "No existe el post a comentar" << endl;
     }
     else
     {
-        comentar(raizAux->getHijoDer(), postAComentar, newComentario);
+        comentar(raizAux->hijoDer, postAComentar, newComentario);
     }
 }
 
 template <class T> void ArbolBinario<T>:: responder(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
-    if(raizAux->getDato==postAComentar)
+    if(raizAux->dato==postAComentar)
     {
-        comentar(raizAux->getHijoIzq(), comentarioAResponder, newRespuesta);
+        comentar(raizAux->hijoIzq, comentarioAResponder, newRespuesta);
     }
-    else if(raizAux->getDato() == NULL)
+    else if(raizAux->dato == NULL)
     {
         cout << "No es posible responder" << endl;
     }
     else
     {
-        responder(raizAux->getHijoDer(), postAComentar, comentarioAResponder, newRespuesta);
+        responder(raizAux->hijoDer, postAComentar, comentarioAResponder, newRespuesta);
     }
 }
 
