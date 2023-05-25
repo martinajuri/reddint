@@ -24,5 +24,7 @@ public:
     void Agregar(Contenido*newPost){agregar(raiz,newPost);}
     bool buscarPost(Nodo<T>* raizAux ,Contenido* post);
     void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
+    void imprimir(Nodo<Contenido*>* raizAux);
+    void Imprimir(){imprimir(raiz);};
 };
 #endif

@@ -30,7 +30,7 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>* raizAux, Contenido* n
 {
     if(raizAux == NULL)
     {
-        raizAux = new Nodo<T>(newPost);
+        raizAux = new Nodo<T>(&newPost);
     }
     else
     {
@@ -102,7 +102,17 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
         borrarPost(raizAux->getHijoDer(), post);
     }
 }
+template <class T> void ArbolBinario<T>::imprimir(Nodo<Contenido*>* raizAux)
+{
 
+    if (raizAux != NULL) {
+        Contenido *contAux = raizAux->getDato();
+        contAux->imprimir();
+        imprimir(raizAux->hijoIzq);
+        imprimir(raizAux->hijoDer);
+    }
+
+}
 
 #endif
 
