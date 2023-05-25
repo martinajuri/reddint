@@ -10,9 +10,9 @@ template <class T>
 class Nodo
 {
 private:
-    T *dato;        // Puntero al dato del nodo
-    Nodo * hijoDer;
-    Nodo * hijoIzq;     // Puntero al siguiente nodo
+    T* dato;        
+    Nodo* hijoDer;
+    Nodo* hijoIzq;   
 public:
     Nodo() {
         hijoDer = NULL;
