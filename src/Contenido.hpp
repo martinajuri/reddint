@@ -50,7 +50,7 @@ class Contenido
         int getValoracion(){return valoracion;};
         void imprimir()
         {
-            cout<<"-------------------------"<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
+            cout<<"-------------------------"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
             usuario->imprimirU();
             fecha->imprimirF();
             cout<<"-------------------------"<<endl;  

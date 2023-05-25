@@ -57,7 +57,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     }
 }
 
-template <class T> void ArbolBinario<T>:: responder(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
+template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
     if(raizAux->dato==postAComentar)
     {
