@@ -15,6 +15,17 @@ template <class T> void ArbolBinario<T>::rid(Nodo<T>* aux)
     }
 }
 
+// template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
+// {
+//     int i;
+//     if (aux != NULL) {                      //OjO este es un recorrido dri
+//         show(aux->der, n + 1);
+//         for (i = 1; i <= n; i++) cout << "     ";
+//         cout << aux->info << "\n";
+//         show(aux->izq, n + 1);
+//     }
+// }
+
 template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
 {
     int i;
@@ -26,15 +37,19 @@ template <class T> void ArbolBinario<T>::show(Nodo<T>* aux, int n)
     }
 }
 
-template <class T> void ArbolBinario<T>:: agregar(Nodo<T>* raizAux, Contenido* newPost)
+template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* newPost)
 {
     if(raizAux == NULL)
     {
-        raizAux = new Nodo<T>(&newPost);
+        raizAux = new Nodo<Contenido>(newPost);
+    }
+    else if (raizAux->hijoDer != NULL)
+    {
+       agregar(raizAux->hijoDer, newPost);
     }
     else
     {
-       agregar(raizAux->getHijoDer(), newPost);
+        raizAux->hijoDer = new Nodo<Contenido>(newPost);
     }
 }
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>* raizAux, Contenido* postAComentar, Contenido* newComentario)
@@ -102,11 +117,11 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
         borrarPost(raizAux->getHijoDer(), post);
     }
 }
-template <class T> void ArbolBinario<T>::imprimir(Nodo<Contenido*>* raizAux)
+template <class T> void ArbolBinario<T>::imprimir(Nodo<T>* raizAux)
 {
 
     if (raizAux != NULL) {
-        Contenido *contAux = raizAux->getDato();
+        Contenido* contAux = raizAux->dato;
         contAux->imprimir();
         imprimir(raizAux->hijoIzq);
         imprimir(raizAux->hijoDer);
