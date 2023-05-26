@@ -130,7 +130,7 @@ template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Conte
     }
     else
     {
-        nodoAlPost(raizAux->hijoDer, post);
+       return nodoAlPost(raizAux->hijoDer, post);
     }
 }
 #endif
