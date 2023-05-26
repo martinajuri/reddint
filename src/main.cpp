@@ -28,8 +28,10 @@ int main(){
     arbolito->Comentar(post1, comentario2);
     arbolito->Responder(post1,comentario2,respuesta1);
     //arbolito->BorrarPost(post1);
+    comentario2->meGusta();
+    comentario2->meGusta();
     comentario1->meGusta();
-    comentario2->nomeGusta();
+    comentario1->nomeGusta();
     arbolito->Imprimir();
 
     Contenido *masVotado = arbolito->ComentarioMasVotado(post1);

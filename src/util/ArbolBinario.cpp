@@ -20,7 +20,7 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
     else
     {
         raizAux->hijoDer = new Nodo<Contenido>(newPost);
-        newPost->usuario->agregarParticipacion(newPost);
+        //newPost->usuario->agregarParticipacion(newPost);
     }
 }
 
@@ -38,7 +38,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     else
     {
         comentar(raizAux->hijoDer, postAComentar, newComentario);
-        postAComentar->agregarParticipante(newComentario->usuario);
+        //postAComentar->agregarParticipante(newComentario->getUsuario());
     }
 }
 
@@ -107,11 +107,11 @@ template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& rai
 //Devuelve un puntero al usuario mas participativo.
 template <class T> Usuario* ArbolBinario<T>::usuarioMasParticipativo(Nodo<T>*& raizAux){
      if (raizAux != NULL) {
-        if()
+        return NULL;
         usuarioMasParticipativo(raizAux->hijoIzq);
         usuarioMasParticipativo(raizAux->hijoDer);
     }
-    
+    return NULL;
 }
 
 

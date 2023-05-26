@@ -37,7 +37,7 @@ template <class T> class  ArbolBinario {
             }
             return comentarioMasVotado(nodoAux->hijoIzq);
         };
-        Usuario* usuarioMasParticipativo(Contenido* post){
+        Usuario* UsuarioMasParticipativo(Contenido* post){
             nodoAux = nodoAlPost(raiz, post);
             if (nodoAux == NULL){
                 cout << "No fue posible encontrar la publicacion"<<endl;

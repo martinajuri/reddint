@@ -29,7 +29,8 @@ template <class T> class List {
 
     //Tamaño
         bool isEmpty(void) {
-            return czo->isEmpty();
+            if(czo == NULL){return true;}
+            return false;
         };
         int size();
 
