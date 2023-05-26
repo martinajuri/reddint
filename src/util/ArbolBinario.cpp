@@ -20,6 +20,7 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
     else
     {
         raizAux->hijoDer = new Nodo<Contenido>(newPost);
+        newPost->usuario->agregarParticipacion(newPost);
     }
 }
 
@@ -37,6 +38,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     else
     {
         comentar(raizAux->hijoDer, postAComentar, newComentario);
+        postAComentar->agregarParticipante(newComentario->usuario);
     }
 }
 
@@ -141,10 +143,10 @@ template <class T> void ArbolBinario<T>::imprimirPublicacion(Contenido* post)
 {
     post->imprimir();
     cout << "Comentario más votado: "; 
-    comentarioMasVotado(post).imprimir();
+    ComentarioMasVotado(post).imprimir();
     cout<< endl;
     cout << "Usuario más participativo: ";
-    usuarioMasParticipativo(post).imprimirU();
+    UsuarioMasParticipativo(post).imprimirU();
     cout << endl;
     cout << "Valoración: " << post->getValoracion() << endl;
 }
