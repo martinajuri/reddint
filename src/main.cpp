@@ -19,12 +19,20 @@ int main(){
     Contenido* comentario1 = new Contenido(fecha2,usuario1,"un horror che", TipoDeContenido::COMENTARIO);
     Contenido* comentario2 = new Contenido(fecha2,usuario1,"Voten al ceu o me clavo una cuchara en el culo", TipoDeContenido::COMENTARIO);
     Contenido* respuesta1 = new Contenido(fecha2,usuario2,"Voten al abm o yo se la clavo al de arriba", TipoDeContenido::RESPUESTA);
+   
+    
     ArbolBinario<Contenido> *arbolito = new ArbolBinario<Contenido>();
     arbolito->Agregar(post1);
     arbolito->Agregar(post2);
-    arbolito->Comentar(post2, comentario1);
+    arbolito->Comentar(post1, comentario1);
     arbolito->Comentar(post1, comentario2);
     arbolito->Responder(post1,comentario2,respuesta1);
     arbolito->BorrarPost(post1);
+    comentario1->meGusta();
+    comentario2->nomeGusta();
     arbolito->Imprimir();
+
+    Contenido *masVotado = arbolito->ComentarioMasVotado(post1);
+    if(masVotado!=NULL)masVotado->imprimir();
+
 };

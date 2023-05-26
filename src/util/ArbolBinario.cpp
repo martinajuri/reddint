@@ -99,5 +99,39 @@ template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 
 }
 
+//Devuelve un puntero al comentario mas votado. Devuelve NULL si 
+template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& raizAux){
+    
+    if (raizAux->hijoDer == NULL)
+    {
+        return raizAux->dato;
+    }
+    else{
+        return masVotado(raizAux->dato, comentarioMasVotado(raizAux->hijoDer));
+    }
+}
+
+// Devuelve un puntero al contenido con mayor valoracion, si ambos son iguales devuelve el primero.
+template <class T> Contenido* ArbolBinario<T>::masVotado(Contenido* contenido1, Contenido* contenido2){
+    if(contenido1->getValoracion() < contenido2->getValoracion()) return contenido2;
+    else if (contenido1->getValoracion() > contenido2->getValoracion()) return contenido1;
+    else return contenido1;
+}
+
+//Devuelve un puntero al nodo que contiene la publicacion. Devuelve NULL si la publicacion no se encuentra
+template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Contenido* post){
+    if(raizAux->dato == post)
+    {
+        return raizAux;
+    }
+    else if(raizAux->hijoDer==NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        nodoAlPost(raizAux->hijoDer, post);
+    }
+}
 #endif
 
