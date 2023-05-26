@@ -18,11 +18,9 @@ class Contenido
         string cuerpo;
         int valoracion;
         string titulo;
-        //List<Usuario> participantes;
+        List<Usuario>* participantes;
         TipoDeContenido tipo;
 
-        Contenido comentarioMasVotado();
-        Usuario usuarioMasParticipativo();
 
     public:
         Contenido(Fecha* fecha, Usuario* usuario, string cuerpo, TipoDeContenido tipo)
@@ -41,7 +39,7 @@ class Contenido
             this->cuerpo = cuerpo;
             this->tipo = tipo;
             valoracion = 0;
-
+            participantes = new List<Usuario>();
         };
         Contenido(){};
 
@@ -55,7 +53,7 @@ class Contenido
             fecha->imprimirF();
             cout<<"-------------------------"<<endl;  
         };
-        void imprimirPosteo();
+        void agregarParticipante(Usuario* participante){participantes->add(participante);}
 };
 
 #endif

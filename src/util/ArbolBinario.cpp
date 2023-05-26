@@ -6,7 +6,7 @@ using namespace std;
 #define ARBOLBINARIO_C
 
 
-
+// Agrega una publicacion al arbol
 template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* newPost)
 {
     if(raizAux == NULL)
@@ -22,6 +22,8 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
         raizAux->hijoDer = new Nodo<Contenido>(newPost);
     }
 }
+
+// Agrega un comentario a una  publicacion
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
     if(raizAux->dato == postAComentar)
@@ -30,7 +32,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     }
     else if(raizAux->dato == NULL)
     {
-        cout << "No existe el post a comentar" << endl;
+        cout << "No existe la publicacion a comentar" << endl;
     }
     else
     {
@@ -38,6 +40,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     }
 }
 
+// Agrega una respuesta a un comentario
 template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
     if(raizAux->dato==postAComentar)
@@ -46,7 +49,7 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
     }
     else if(raizAux->dato == NULL)
     {
-        cout << "No es posible responder" << endl;
+        cout << "No existe el comentario a responder" << endl;
     }
     else
     {
@@ -54,20 +57,7 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
     }
 }
 
-
-template <class T> bool ArbolBinario<T>::buscarPost(Nodo<T>* raizAux ,Contenido* post){
-
-    if(raizAux->dato == post){
-        return true;
-    }
-    else if (raizAux == NULL){
-        return false;    }
-    else{
-        return buscarPost(raizAux->hijoDer, post);
-    }
-
-}
-
+// Borra una publicacion y todos sus comentarios y respuestas
 template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido* post){
 
     if(raizAux->dato == post){
@@ -87,6 +77,7 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
     }
 }
 
+// Imprime el arbol en orden rid
 template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 {
 
@@ -99,7 +90,7 @@ template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 
 }
 
-//Devuelve un puntero al comentario mas votado. Devuelve NULL si 
+//Devuelve un puntero al comentario mas votado.
 template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& raizAux){
     
     if (raizAux->hijoDer == NULL)
@@ -110,6 +101,17 @@ template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& rai
         return masVotado(raizAux->dato, comentarioMasVotado(raizAux->hijoDer));
     }
 }
+
+//Devuelve un puntero al usuario mas participativo.
+template <class T> Usuario* ArbolBinario<T>::usuarioMasParticipativo(Nodo<T>*& raizAux){
+     if (raizAux != NULL) {
+        if()
+        usuarioMasParticipativo(raizAux->hijoIzq);
+        usuarioMasParticipativo(raizAux->hijoDer);
+    }
+    
+}
+
 
 // Devuelve un puntero al contenido con mayor valoracion, si ambos son iguales devuelve el primero.
 template <class T> Contenido* ArbolBinario<T>::masVotado(Contenido* contenido1, Contenido* contenido2){
@@ -132,6 +134,19 @@ template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Conte
     {
        return nodoAlPost(raizAux->hijoDer, post);
     }
+}
+
+//Imprime una publicacion con su comentario mas votado, su usuario mas participativo y valoracion promedio??
+template <class T> void ArbolBinario<T>::imprimirPublicacion(Contenido* post)
+{
+    post->imprimir();
+    cout << "Comentario más votado: "; 
+    comentarioMasVotado(post).imprimir();
+    cout<< endl;
+    cout << "Usuario más participativo: ";
+    usuarioMasParticipativo(post).imprimirU();
+    cout << endl;
+    cout << "Valoración: " << post->getValoracion() << endl;
 }
 #endif
 

@@ -17,6 +17,7 @@ template <class T> class  ArbolBinario {
         void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
         Contenido* masVotado(Contenido* contenido1, Contenido* contenido2);
         Nodo<T>* nodoAlPost(Nodo<T>*& raizAux, Contenido* post);
+        Usuario* usuarioMasParticipativo(Nodo<T>*& raizAux);
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
 
     public:
@@ -25,10 +26,9 @@ template <class T> class  ArbolBinario {
         void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta);};
         void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario);}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
-        bool buscarPost(Nodo<T>* raizAux ,Contenido* post);
         void Imprimir(){imprimir(raiz);};
+        void imprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
-        Usuario usuarioMasParticipativo();
         Contenido* ComentarioMasVotado(Contenido* post){
             nodoAux = nodoAlPost(raiz, post);
             if (nodoAux == NULL){
@@ -36,6 +36,14 @@ template <class T> class  ArbolBinario {
                 return NULL;
             }
             return comentarioMasVotado(nodoAux->hijoIzq);
+        };
+        Usuario* usuarioMasParticipativo(Contenido* post){
+            nodoAux = nodoAlPost(raiz, post);
+            if (nodoAux == NULL){
+                cout << "No fue posible encontrar la publicacion"<<endl;
+                return NULL;
+            }
+            return usuarioMasParticipativo(nodoAux->hijoIzq);
         };
         
 
