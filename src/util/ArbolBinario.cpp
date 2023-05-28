@@ -167,7 +167,6 @@ template <class T> void ArbolBinario<T>::imprimirPublicacion(Contenido* post)
     cout << "Usuario más participativo: ";
     UsuarioMasParticipativo(post)->imprimir();
     cout << endl;
-    cout << "Valoración: " << post->getValoracion() << endl;
 }
 #endif
 

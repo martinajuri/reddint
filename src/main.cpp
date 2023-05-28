@@ -37,7 +37,5 @@ int main(){
     arbolito->Imprimir();
     arbolito->imprimirPublicacion(post1);
 
-    Contenido *masVotado = arbolito->ComentarioMasVotado(post1);
-    if(masVotado!=NULL)masVotado->imprimir();
 
 };
