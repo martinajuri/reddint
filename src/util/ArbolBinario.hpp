@@ -18,18 +18,19 @@ template <class T> class  ArbolBinario {
         void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
         Contenido* masVotado(Contenido* contenido1, Contenido* contenido2);
         Nodo<T>* nodoAlPost(Nodo<T>*& raizAux, Contenido* post);
-        Usuario* usuarioMasParticipativo(Nodo<T>*& raizAux);
+        Usuario* usuarioMasParticipativo(Lista<Usuario*>* lista);
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
 
     public:
         ArbolBinario() { raiz = NULL; };
         void crearContenido(){};
-        void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta);};
-        void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario);}
+        void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta); postAComentar->agregarParticipante(newRespuesta->getUsuario());};
+        void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
         void Imprimir(){imprimir(raiz);};
         void imprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
+        int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);
         Contenido* ComentarioMasVotado(Contenido* post){
             nodoAux = nodoAlPost(raiz, post);
             if (nodoAux == NULL){
@@ -44,7 +45,7 @@ template <class T> class  ArbolBinario {
                 cout << "No fue posible encontrar la publicacion"<<endl;
                 return NULL;
             }
-            return usuarioMasParticipativo(nodoAux->hijoIzq);
+            return usuarioMasParticipativo(nodoAux->dato->getParticipantes());
         };
         
 
