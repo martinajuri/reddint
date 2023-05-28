@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "util\Lista.hpp"
 
 using namespace std;
 
@@ -10,12 +11,13 @@ class Usuario
 {
     private:
         string nombre;
-
+        
     public:
         Usuario(string nombre) { this->nombre = nombre;}
         Usuario(){};
-
-        void imprimirU(){ cout << nombre<<endl;};
+        
+        void imprimir(){ cout << nombre<<endl;};
+        void ordenarParticipaciones(){};
 };
 
 #endif
