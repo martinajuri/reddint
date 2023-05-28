@@ -104,13 +104,33 @@ template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& rai
 }
 
 //Devuelve un puntero al usuario mas participativo.
-template <class T> Usuario* ArbolBinario<T>::usuarioMasParticipativo(Nodo<T>*& raizAux){
-     if (raizAux != NULL) {
-        return NULL;
-        usuarioMasParticipativo(raizAux->hijoIzq);
-        usuarioMasParticipativo(raizAux->hijoDer);
+template <class T> Usuario* ArbolBinario<T>::usuarioMasParticipativo(Lista<Usuario*>* lista){
+    if (lista->resto() == NULL)
+    {
+        return lista->cabeza();
     }
-    return NULL;
+    else if (participacionesDeUsuario(lista, lista->cabeza())>participacionesDeUsuario(lista, usuarioMasParticipativo(lista->resto()))){
+        return lista->cabeza();
+    }
+    else{
+        return usuarioMasParticipativo(lista->resto());
+    }
+    
+}
+
+//Devuelve la cantidad de participaciones de un usuario.
+template <class T> int ArbolBinario<T>::participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user){
+    if(lista->esvacia()|| lista == NULL){
+        return 0;
+    }
+    else if (lista->cabeza() == user) {
+        return 1 + participacionesDeUsuario(lista->resto(), user);
+    }
+    else{
+        return participacionesDeUsuario(lista->resto(), user);
+
+    }
+
 }
 
 
@@ -141,11 +161,11 @@ template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Conte
 template <class T> void ArbolBinario<T>::imprimirPublicacion(Contenido* post)
 {
     post->imprimir();
-    cout << "Comentario más votado: "; 
-    ComentarioMasVotado(post).imprimir();
+    cout << "Comentario más votado: "<<endl; 
+    ComentarioMasVotado(post)->imprimir();
     cout<< endl;
     cout << "Usuario más participativo: ";
-    UsuarioMasParticipativo(post).imprimirU();
+    UsuarioMasParticipativo(post)->imprimir();
     cout << endl;
     cout << "Valoración: " << post->getValoracion() << endl;
 }

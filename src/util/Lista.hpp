@@ -48,7 +48,7 @@ void Lista<T>::add(T d) //100
 template <class T>
 bool Lista<T>::esvacia(void)
 {
-    if(czo == NULL){return true;}
+    if(czo->get_next()==nullptr){return true;}
         return false;
     //return czo->es_vacio();
 }
@@ -56,7 +56,6 @@ template <class T>
 T Lista<T>::cabeza(void)
 {
     if (this->esvacia()) {
-        cout << " Error, Cabeza de lista vacia";
         return NULL;
     }
     return czo->get_dato();
@@ -65,8 +64,14 @@ T Lista<T>::cabeza(void)
 template <class T>
 Lista<T>* Lista<T>::resto(void)
 {
-    Lista* l = new Lista(czo->get_next());
-    return (l);
+    if(czo->get_next()==nullptr){
+        return NULL;
+    }
+    else{
+        Lista* l = new Lista(czo->get_next());
+        return (l);
+    }
+    
 }
 
 

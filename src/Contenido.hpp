@@ -47,6 +47,7 @@ class Contenido
         void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};
         Usuario* getUsuario(){return usuario;};
+        Lista<Usuario*>* getParticipantes(){return participantes;}
         void imprimir()
         {
             cout<<"-------------------------"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";

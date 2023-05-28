@@ -18,7 +18,7 @@ template <class T> class  ArbolBinario {
         void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
         Contenido* masVotado(Contenido* contenido1, Contenido* contenido2);
         Nodo<T>* nodoAlPost(Nodo<T>*& raizAux, Contenido* post);
-        Usuario* usuarioMasParticipativo(Nodo<T>*& raizAux);
+        Usuario* usuarioMasParticipativo(Lista<Usuario*>* lista);
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
 
     public:
@@ -30,6 +30,7 @@ template <class T> class  ArbolBinario {
         void Imprimir(){imprimir(raiz);};
         void imprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
+        int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);
         Contenido* ComentarioMasVotado(Contenido* post){
             nodoAux = nodoAlPost(raiz, post);
             if (nodoAux == NULL){
@@ -44,7 +45,7 @@ template <class T> class  ArbolBinario {
                 cout << "No fue posible encontrar la publicacion"<<endl;
                 return NULL;
             }
-            return usuarioMasParticipativo(nodoAux->hijoIzq);
+            return usuarioMasParticipativo(nodoAux->dato->getParticipantes());
         };
         
 
