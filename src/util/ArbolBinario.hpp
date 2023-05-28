@@ -1,6 +1,7 @@
 #include <iostream>
 #include "..\Contenido.hpp"
 #include "Nodo.hpp"
+#include "List.hpp"
 
 
 using namespace std;

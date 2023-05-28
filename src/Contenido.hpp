@@ -3,7 +3,7 @@
 #include "Fecha.hpp"
 #include "Usuario.hpp"
 #include "tipoDeContenido.hpp"
-#include "util\List.hpp"
+#include "util\Lista.hpp"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ class Contenido
         string cuerpo;
         int valoracion;
         string titulo;
-        List<Usuario>* participantes;
+        Lista<Usuario*>* participantes;
         TipoDeContenido tipo;
 
 
@@ -39,7 +39,7 @@ class Contenido
             this->cuerpo = cuerpo;
             this->tipo = tipo;
             valoracion = 0;
-            participantes = new List<Usuario>();
+            participantes = new Lista<Usuario*>(usuario);
         };
         Contenido(){};
 
@@ -50,9 +50,8 @@ class Contenido
         void imprimir()
         {
             cout<<"-------------------------"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
-            usuario->imprimirU();
-            fecha->imprimirF();
-            //participantes->imprimir();
+            usuario->imprimir();
+            fecha->imprimir();
             cout<<"-------------------------"<<endl;  
         };
         void agregarParticipante(Usuario* participante){participantes->add(participante);}

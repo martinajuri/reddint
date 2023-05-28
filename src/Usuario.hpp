@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "util\List.hpp"
-class Contenido;
+#include "util\Lista.hpp"
+
 using namespace std;
 
 #ifndef USUARIO_HPP
@@ -16,7 +16,7 @@ class Usuario
         Usuario(string nombre) { this->nombre = nombre;}
         Usuario(){};
         
-        void imprimirU(){ cout << nombre<<endl;};
+        void imprimir(){ cout << nombre<<endl;};
         void ordenarParticipaciones(){};
 };
 

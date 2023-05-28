@@ -53,7 +53,7 @@ class Fecha
                 return false;
         }
 
-        void imprimirF(){cout<<dia<<"/"<<mes<<"/"<<anio<<endl;}
+        void imprimir(){cout<<dia<<"/"<<mes<<"/"<<anio<<endl;}
 };
 
 #endif
