@@ -28,7 +28,7 @@ int main(){
     arbolito->Comentar(post1, comentario1);
     arbolito->Comentar(post1, comentario2);
     arbolito->Comentar(post1, comentario3);
-    //arbolito->Responder(post1,comentario2,respuesta1);
+    arbolito->Responder(post1,comentario2,respuesta1);
     //arbolito->BorrarPost(post1);
     comentario2->meGusta();
     comentario2->meGusta();

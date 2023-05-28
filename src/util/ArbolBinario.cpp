@@ -30,7 +30,6 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
     if(raizAux->dato == postAComentar)
     {
         agregar(raizAux->hijoIzq, newComentario);
-        postAComentar->agregarParticipante(newComentario->getUsuario());
     }
     else if(raizAux->dato == NULL)
     {
