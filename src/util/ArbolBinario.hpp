@@ -1,12 +1,12 @@
+#ifndef ARBOLBINARIO_H
+#define ARBOLBINARIO_H
+
 #include <iostream>
 #include "..\Contenido.hpp"
 #include "Nodo.hpp"
-#include "List.hpp"
-
+#include "Lista.hpp"
 
 using namespace std;
-#ifndef ARBOLBINARIO_H
-#define ARBOLBINARIO_H
 
 template <class T> class  ArbolBinario 
 {
@@ -18,10 +18,10 @@ template <class T> class  ArbolBinario
         void responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta);
         void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
         Contenido* masVotado(Contenido* contenido1, Contenido* contenido2);
-        Nodo<T>* nodoAlPost(Nodo<T>*& raizAux, Contenido* post);
+        Nodo<T>* nodoAlContenido(Nodo<T>*& raizAux, Contenido* post);
         Usuario* usuarioMasParticipativo(Lista<Usuario*>* lista);
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
-        Lista<Contenido*> participacionesPorUsuario(Nodo<Contenido*>*& raizAux, Usuario* user, Lista<Contenido*>* lista);
+        void participacionesPorUsuario(Nodo<Contenido>*& raizAux, Usuario* user, Lista<Contenido*>* lista);
         void ordenarParticipaciones(Lista<Contenido*>* lista);
 
     public:
