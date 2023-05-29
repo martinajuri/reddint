@@ -1,3 +1,26 @@
+/*
+ARCHIVO DE LA CLASE "Contenido"
+    Modela un tipo de contenido para Reddint(Post, Comentario o respuesta)
+CONSTRUCTORES
+    + Constructor 1: Para comentarios o respuestas (Otorgar fecha,
+        usuario creador, cuerpo de texto y tipo de contenido)
+    + Constructor 2: Para posts (Agrega titulo y Participantes a los parametros de arriba)
+METODOS PUBLICOS
+    + meGusta, noMeGusta: Modela los metodos para valorar un post negativa
+        o positivamente. No devuelve ni pide nada.
+    + getValoracion: Devuelve la valoracion de un post como entero
+    + getUsuario: Devuelve un puntero al usuario que creo el contenido
+    + getParticipantes: Devuelve una lista de punteros de todos los usuarios
+        que hayan participado en ese contenido (solo para posts)
+    + imprimir: Imprime informacion del contenido por consola
+    + agregarParticipante: Agrega un participante (puntero a usuario) a la lista.
+        Lo llamara otro metodo
+*/
+
+
+
+
+
 #include <iostream>
 #include <string>
 #include "Fecha.hpp"

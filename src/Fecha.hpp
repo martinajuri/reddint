@@ -1,3 +1,16 @@
+/*
+ARCHIVO DE LA CLASE "Fecha"
+    Modela una clase para organizar cosas segun fecha de creacion
+CONSTRUCTORES
+    + Constructor 1: Crea una fecha con dia mes y anio como parametro
+METODOS PUBLICOS
+    + fechaValida: Devuelve true si la fecha es valida segun un criterio rudimentario
+    + esMayor: Compara con otra fecha si la presente o la otra es mayor
+    + imprimir: Imprime la fecha
+
+
+*/
+
 #include <iostream>
 
 using namespace std;

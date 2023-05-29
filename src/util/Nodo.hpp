@@ -1,3 +1,12 @@
+/*
+ARCHIVO DE LA CLASE "Nodo"
+    Modela un nodo con directorio binario: Hijo izquierdo e Hijo derecho
+CONSTRUCTORES
+    Constructor 1: Inicializa el nodo sin nada
+    Constructor 2: Inicializa el nodo con un puntero a un dato
+
+
+*/
 #include <cstdlib>
 #include <iostream>
 #include <sstream>

@@ -9,15 +9,15 @@ using namespace std;
 // Agrega una publicacion al arbol
 template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* newPost)
 {
-    if(raizAux == NULL)
+    if(raizAux == NULL) //si aun no hay ningun nodo con puntero a post, lo crea y es la raiz 
     {
         raizAux = new Nodo<Contenido>(newPost);
     }
-    else if (raizAux->hijoDer != NULL)
+    else if (raizAux->hijoDer != NULL) //si hay ya un nodo-*post, ejecuta el agregar en ese
     {
        agregar(raizAux->hijoDer, newPost);
     }
-    else
+    else //si no hay nodo-*post en el derecho, lo crea
     {
         raizAux->hijoDer = new Nodo<Contenido>(newPost);
         //newPost->usuario->agregarParticipacion(newPost);
@@ -27,16 +27,16 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
 // Agrega un comentario a una  publicacion
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    if(raizAux->dato == postAComentar)
+    if(raizAux->dato == postAComentar) //si el post que se quiere comentar coincide con el de la raiz(aux)
     {
-        agregar(raizAux->hijoIzq, newComentario);
+        agregar(raizAux->hijoIzq, newComentario); //Agrega al subarbol del hijo izquierdo el comentario
     }
-    else if(raizAux->dato == NULL)
+    else if(raizAux->dato == NULL && raizAux->hijoDer == NULL)  //Si no encuentra el post y ya no hay mas nodos a la derecha
     {
-        cout << "No existe la publicacion a comentar" << endl;
+        cout << "No existe la publicacion a comentar" << endl; //OJO, REVER
     }
-    else
-    {
+    else    //si no se encontro en la raiz se sigue con el siguiente post
+    {   
         comentar(raizAux->hijoDer, postAComentar, newComentario);
     }
 }
