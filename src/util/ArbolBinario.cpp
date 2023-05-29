@@ -215,16 +215,22 @@ template <class T> Usuario* ArbolBinario<T>::UsuarioMasParticipativo(Contenido* 
 //Imprime una publicacion con su comentario mas votado, su usuario mas participativo y valoracion promedio??
 template <class T> void ArbolBinario<T>::ImprimirPublicacion(Contenido* post)
 {
-    if(post!=NULL){
-        post->imprimir();
-        cout << "Comentario más votado: "<<endl; 
-        ComentarioMasVotado(post)->imprimir();
-        cout<< endl;
-        cout << "Usuario más participativo: ";
-        UsuarioMasParticipativo(post)->imprimir();
-        cout << endl;
-    }
-    else cout << "No existe esa publicacion" << endl;
+    if(post!=NULL)
+    {
+        nodoAux = nodoAlPost(raiz,post);
+        if(nodoAux!=NULL)
+        {
+            post->imprimir();
+            cout << "Comentario más votado: "<<endl; 
+            ComentarioMasVotado(post)->imprimir();
+            cout<< endl;
+            cout << "Usuario más participativo: ";
+            UsuarioMasParticipativo(post)->imprimir();
+            cout << endl;
+        }
+        else cout << "No existe esa publicacion" << endl;
+
+    } else cout << "No existe esa publicacion" << endl;
 }
 
 // template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
