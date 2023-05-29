@@ -145,8 +145,14 @@ template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenid
 //Ordena la lista por orden de publicacion
 template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
 {
-    if(!lista->esvacia()){
-        //llamar al metodo elegido
+    if(lista != NULL){
+        if(lista->size() > 1){
+            Contenido *primero = lista->cabeza();
+            Contenido *menor = lista->cabeza();
+            Nodo<T> *pos = lista->czo;
+
+
+        }
     }
 }
 
@@ -227,5 +233,6 @@ template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
     participacionesPorUsuario(raiz, user, listaDeParticipaciones);
     ordenarParticipaciones(listaDeParticipaciones);
     listaDeParticipaciones->imprimirL();
+    delete listaDeParticipaciones;
 }
 #endif
