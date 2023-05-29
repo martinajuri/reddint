@@ -145,15 +145,14 @@ template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenid
 //Ordena la lista por orden de publicacion
 template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
 {
-    if(lista != NULL){
-        if(lista->size() > 1){
-            Contenido *primero = lista->cabeza();
-            Contenido *menor = lista->cabeza();
-            Nodo<T> *pos = lista->czo;
+    // if(lista != NULL){
+    //     if(lista->size() > 1){
+    //         Contenido *primero = lista->cabeza();
+    //         Contenido *menor = lista->cabeza();
+    //         Nodo<T> *pos = lista->czo;
 
-
-        }
-    }
+    //     }
+    // }
 }
 
 //-----------------------------------------------PRIVADOS EXTRA--------------------------------------------------------------------------------------

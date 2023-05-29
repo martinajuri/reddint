@@ -46,11 +46,13 @@ class Contenido
         void meGusta(){valoracion++;};
         void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};
+        string getTitulo(){return titulo;};
+        void setTitulo(string nuevoTitulo){titulo = nuevoTitulo;};
         Usuario* getUsuario(){return usuario;};
         Lista<Usuario*>* getParticipantes(){return participantes;}
         void imprimir()
         {
-            cout<<"-------------------------"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
+            cout<<"-------------------------\n"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
             usuario->imprimir();
             fecha->imprimir();
             cout<<"-------------------------"<<endl;  

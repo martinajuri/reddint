@@ -27,8 +27,8 @@ template <class T> class  ArbolBinario
     public:
         ArbolBinario() { raiz = NULL; };
         void crearContenido(){};
-        void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta); postAComentar->agregarParticipante(newRespuesta->getUsuario());};
-        void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());}
+        void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta); postAComentar->agregarParticipante(newRespuesta->getUsuario()); newRespuesta->setTitulo("Respuesta a: " + postAComentar->getTitulo());};
+        void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());newComentario->setTitulo("Comentario a: " + postAComentar->getTitulo());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
         void Imprimir(){imprimir(raiz);};
         void ImprimirPublicacion(Contenido* post);
