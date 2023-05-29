@@ -137,6 +137,7 @@ template <class T> int ArbolBinario<T>::participacionesDeUsuario(Lista<Usuario*>
             return participacionesDeUsuario(lista->resto(), user);
         }
     }
+    else return 0;
 }
 
 // //Devuelve las participaciones de un usuario.
