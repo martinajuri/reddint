@@ -13,48 +13,36 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
     {
         raizAux = new Nodo<Contenido>(newPost);
     }
-    else if (raizAux->hijoDer != NULL)
-    {
-       agregar(raizAux->hijoDer, newPost);
-    }
     else
     {
-        raizAux->hijoDer = new Nodo<Contenido>(newPost);
-        //newPost->usuario->agregarParticipacion(newPost);
-    }
+       agregar(raizAux->hijoDer, newPost);
+       //newPost->usuario->agregarParticipacion(newPost);
+    }    
 }
 
 // Agrega un comentario a una  publicacion
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    if(raizAux->dato == postAComentar)
+    nodoAux = nodoAlPost(raizAux, postAComentar);
+    if(nodoAux != NULL)
     {
-        agregar(raizAux->hijoIzq, newComentario);
-    }
-    else if(raizAux->dato == NULL)
+        agregar(nodoAux->hijoIzq, newComentario);
+    }else
     {
         cout << "No existe la publicacion a comentar" << endl;
-    }
-    else
-    {
-        comentar(raizAux->hijoDer, postAComentar, newComentario);
     }
 }
 
 // Agrega una respuesta a un comentario
 template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
-    if(raizAux->dato==postAComentar)
+    nodoAux = nodoAlPost(raizAux, postAComentar);
+    if(nodoAux != NULL)
     {
         comentar(raizAux->hijoIzq, comentarioAResponder, newRespuesta);
-    }
-    else if(raizAux->dato == NULL)
+    }else
     {
         cout << "No existe el comentario a responder" << endl;
-    }
-    else
-    {
-        responder(raizAux->hijoDer, postAComentar, comentarioAResponder, newRespuesta);
     }
 }
 
@@ -78,19 +66,19 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
     else{
         borrarPost(raizAux->hijoDer, post);
     }
+    
 }
 
 // Imprime el arbol en orden rid
 template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
 {
-
-    if (raizAux != NULL) {
+    if (raizAux != NULL) 
+    {
         Contenido* contAux = raizAux->dato;
         contAux->imprimir();
         imprimir(raizAux->hijoIzq);
         imprimir(raizAux->hijoDer);
     }
-
 }
 
 //Devuelve un puntero al comentario mas votado.
