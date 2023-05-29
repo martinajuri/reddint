@@ -59,6 +59,7 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
 }
 
 //------------------------------------------------PRIVADOS DE CONSIGNA-------------------------------------------------------------------------------------
+
 // Borra una publicacion y todos sus comentarios y respuestas
 template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido* post)
 {
