@@ -17,7 +17,6 @@ class Usuario
         Usuario(){};
         
         void imprimir(){ cout << nombre<<endl;};
-        void ordenarParticipaciones(){};
 };
 
 #endif
