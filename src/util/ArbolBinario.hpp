@@ -8,7 +8,8 @@ using namespace std;
 #ifndef ARBOLBINARIO_H
 #define ARBOLBINARIO_H
 
-template <class T> class  ArbolBinario {
+template <class T> class  ArbolBinario 
+{
     private:
         Nodo<T> * raiz, * nodoAux;
         void agregar(Nodo<T>*& raizAux, Contenido* newPost);
@@ -20,6 +21,8 @@ template <class T> class  ArbolBinario {
         Nodo<T>* nodoAlPost(Nodo<T>*& raizAux, Contenido* post);
         Usuario* usuarioMasParticipativo(Lista<Usuario*>* lista);
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
+        Lista<Contenido*> participacionesPorUsuario(Nodo<Contenido*>*& raizAux, Usuario* user, Lista<Contenido*>* lista);
+        void ordenarParticipaciones(Lista<Contenido*>* lista);
 
     public:
         ArbolBinario() { raiz = NULL; };
@@ -28,26 +31,12 @@ template <class T> class  ArbolBinario {
         void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
         void Imprimir(){imprimir(raiz);};
-        void imprimirPublicacion(Contenido* post);
+        void ImprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
         int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);
-        Contenido* ComentarioMasVotado(Contenido* post){
-            nodoAux = nodoAlPost(raiz, post);
-            if (nodoAux == NULL){
-                cout << "No fue posible encontrar la publicacion"<<endl;
-                return NULL;
-            }
-            return comentarioMasVotado(nodoAux->hijoIzq);
-        };
-        Usuario* UsuarioMasParticipativo(Contenido* post){
-            nodoAux = nodoAlPost(raiz, post);
-            if (nodoAux == NULL){
-                cout << "No fue posible encontrar la publicacion"<<endl;
-                return NULL;
-            }
-            return usuarioMasParticipativo(nodoAux->dato->getParticipantes());
-        };
+        Contenido* ComentarioMasVotado(Contenido* post);
+        Usuario* UsuarioMasParticipativo(Contenido* post);
+        void ImprimirParticipaciones(Usuario* user);
         
-
 };
 #endif
