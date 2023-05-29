@@ -35,7 +35,8 @@ int main(){
     comentario1->meGusta();
     comentario1->nomeGusta();
     arbolito->Imprimir();
-    arbolito->imprimirPublicacion(post1);
+    arbolito->ImprimirPublicacion(post1);
+    //arbolito->ImprimirParticipaciones(usuario2);
 
 
 };
