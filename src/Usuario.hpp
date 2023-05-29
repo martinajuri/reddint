@@ -1,11 +1,11 @@
+#ifndef USUARIO_HPP
+#define USUARIO_HPP
+
 #include <iostream>
 #include <string>
 #include "util\Lista.hpp"
 
 using namespace std;
-
-#ifndef USUARIO_HPP
-#define USUARIO_HPP
 
 class Usuario
 {
@@ -18,5 +18,4 @@ class Usuario
         
         void imprimir(){ cout << nombre<<endl;};
 };
-
 #endif
