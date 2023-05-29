@@ -1,9 +1,8 @@
-#include "ArbolBinario.hpp"
-
-using namespace std;
-
 #ifndef ARBOLBINARIO_C
 #define ARBOLBINARIO_C
+
+#include "ArbolBinario.hpp"
+using namespace std;
 
 //---------------------------------------------PRIVADOS DE AGREGADO----------------------------------------------------------------------------------------
 // Agrega una publicacion al arbol
@@ -23,7 +22,7 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
 // Agrega un comentario a una  publicacion
 template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario)
 {
-    nodoAux = nodoAlPost(raizAux, postAComentar);
+    nodoAux = nodoAlContenido(raizAux, postAComentar);
     if(nodoAux != NULL)
     {
         agregar(nodoAux->hijoIzq, newComentario);
@@ -36,7 +35,7 @@ template <class T> void ArbolBinario<T>:: comentar(Nodo<T>*& raizAux, Contenido*
 // Agrega una respuesta a un comentario
 template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta)
 {
-    nodoAux = nodoAlPost(raizAux, postAComentar);
+    nodoAux = nodoAlContenido(raizAux, postAComentar);
     if(nodoAux != NULL)
     {
         comentar(raizAux->hijoIzq, comentarioAResponder, newRespuesta);
@@ -129,27 +128,27 @@ template <class T> int ArbolBinario<T>::participacionesDeUsuario(Lista<Usuario*>
     else return 0;
 }
 
-// //Devuelve las participaciones de un usuario.
-// template <class T> Lista<Contenido*> ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenido*>*& raizAux, Usuario* user, Lista<Contenido*>* lista)
-// {
-//     if (user != NULL && raizAux != NULL)
-//     {
-//        if(raizAux->dato->getUsuario()==user)
-//        {
-//             lista->add(*raizAux->dato);
-//        }
-//         participacionesPorUsuario(raizAux->hijoIzq, user, lista);
-//         participacionesPorUsuario(raizAux->hijoDer, user, lista);
-//     }
-// }
+//Devuelve las participaciones de un usuario.
+template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenido>*& raizAux, Usuario* user, Lista<Contenido*>* lista)
+{
+    if (user != NULL && raizAux != NULL)
+    {
+       if((raizAux->dato)->getUsuario()==user)
+       {
+            lista->add(raizAux->dato);
+       }
+        participacionesPorUsuario(raizAux->hijoIzq, user, lista);
+        participacionesPorUsuario(raizAux->hijoDer, user, lista);
+    }
+}
 
-// //Ordena la lista por orden de publicacion
-// template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
-// {
-//     if(!lista->esvacia()){
-//         //llamar al metodo elegido
-//     }
-// }
+//Ordena la lista por orden de publicacion
+template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
+{
+    if(!lista->esvacia()){
+        //llamar al metodo elegido
+    }
+}
 
 //-----------------------------------------------PRIVADOS EXTRA--------------------------------------------------------------------------------------
 // Devuelve un puntero al contenido con mayor valoracion, si ambos son iguales devuelve el primero.
@@ -161,7 +160,7 @@ template <class T> Contenido* ArbolBinario<T>::masVotado(Contenido* contenido1, 
 }
 
 //Devuelve un puntero al nodo que contiene la publicacion. Devuelve NULL si la publicacion no se encuentra
-template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Contenido* post)
+template <class T> Nodo<T>* ArbolBinario<T>::nodoAlContenido(Nodo<T>*& raizAux, Contenido* post)
 {
     if(raizAux->dato == post)
     {
@@ -172,7 +171,7 @@ template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Conte
         return NULL;
     }
     else{
-       return nodoAlPost(raizAux->hijoDer, post);
+       return nodoAlContenido(raizAux->hijoDer, post);
     }
 }
 
@@ -180,7 +179,7 @@ template <class T> Nodo<T>* ArbolBinario<T>::nodoAlPost(Nodo<T>*& raizAux, Conte
 //Metodo Publico: devuelve el comentario mas votado de un post
 template <class T> Contenido* ArbolBinario<T>::ComentarioMasVotado(Contenido* post)
 {
-    nodoAux = nodoAlPost(raiz, post);
+    nodoAux = nodoAlContenido(raiz, post);
     if (nodoAux == NULL)
     {
         cout << "No fue posible encontrar la publicacion"<<endl;
@@ -192,7 +191,7 @@ template <class T> Contenido* ArbolBinario<T>::ComentarioMasVotado(Contenido* po
 //Metodo Publico: devuelve el usuario que mas participo en un post
 template <class T> Usuario* ArbolBinario<T>::UsuarioMasParticipativo(Contenido* post)
 {
-    nodoAux = nodoAlPost(raiz, post);
+    nodoAux = nodoAlContenido(raiz, post);
     if (nodoAux == NULL)
     {
         cout << "No fue posible encontrar la publicacion"<<endl;
@@ -206,7 +205,7 @@ template <class T> void ArbolBinario<T>::ImprimirPublicacion(Contenido* post)
 {
     if(post!=NULL)
     {
-        nodoAux = nodoAlPost(raiz,post);
+        nodoAux = nodoAlContenido(raiz,post);
         if(nodoAux!=NULL)
         {
             post->imprimir();
@@ -222,11 +221,11 @@ template <class T> void ArbolBinario<T>::ImprimirPublicacion(Contenido* post)
     } else cout << "No existe esa publicacion" << endl;
 }
 
-// template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
-// {
-//     Lista<Contenido*>* listaDeParticipaciones = new Lista<Contenido*>();
-//     participacionesPorUsuario(raiz, user, listaDeParticipaciones);
-//     ordenarParticipaciones(listaDeParticipaciones);
-//     listaDeParticipaciones->imprimirL();
-// }
+template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
+{
+    Lista<Contenido*>* listaDeParticipaciones = new Lista<Contenido*>();
+    participacionesPorUsuario(raiz, user, listaDeParticipaciones);
+    ordenarParticipaciones(listaDeParticipaciones);
+    listaDeParticipaciones->imprimirL();
+}
 #endif
