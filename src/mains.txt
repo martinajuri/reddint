@@ -47,3 +47,4 @@ r_musica->Agregar(post3);
 Contenido* comentario3_1 = new Contenido(fecha4,usuario4,"Que decis man? como no te van a gustar los redondos? Que cuadrado...", TipoDeContenido::COMENTARIO);
 r_musica->Comentar(post3,comentario3_1);
 Contenido* comentario3_2 = new Contenido(fecha4,usuario4,"Como me lo vas a insultar asi al ricota!! encima hizo el tema del mundial!! MUCHAAACHOSSSS", TipoDeContenido::COMENTARIO);comentario3_2->nomeGusta();
+r_musica->Comentar(post3,comentario3_2);

@@ -8,36 +8,54 @@
 using namespace std;
 
 int main(){
-    Fecha* fecha = new Fecha(15,7,2022);
-    Fecha* fecha2 = new Fecha(20,8,2023);
-    Fecha* fecha3 = new Fecha(15,9,2023);
-    Usuario* usuario1 = new Usuario("FortFan23");
-    Usuario* usuario2 = new Usuario("ABM");
+    ArbolBinario<Contenido> *r_musica = new ArbolBinario<Contenido>();
+Fecha* fecha1 = new Fecha(20,3,2023);
+Fecha* fecha2 = new Fecha(21,3,2023);
+Fecha* fecha3 = new Fecha(22,3,2023);
+Fecha* fecha4 = new Fecha(1,4,2023);
+Fecha* fecha5 = new Fecha(5,4,2023);
+Fecha* fecha6 = new Fecha(6,4,2023);
+Fecha* fecha7 = new Fecha(19,5,2023);
+Fecha* fecha8 = new Fecha(20,5,2023);
 
-    Contenido* post1 = new Contenido(fecha,usuario1,"La magia de Messi brilla en la Copa del Mundo: ¡Argentina gana su tercera!","En un emocionante partido lleno de jugadas deslumbrantes, Lionel Messi llevó a la selección argentina a la gloria en la Copa del Mundo. Con su visión, habilidad y goles asombrosos, Messi se consagra como el líder indiscutible del equipo. Esta victoria histórica es un guiño a la grandeza de Messi y una alegría para todos los fanáticos del fútbol. ¡Ricardo Fort seguramente estaría celebrando en el cielo del chocolate! ¡Felicitaciones a Messi y a todo el equipo por este logro inolvidable!",TipoDeContenido::PUBLICACION);
-    Contenido* post2 = new Contenido(fecha,usuario1,"Crisis en la FCEFYN","Se notificaron multiples casos de estudiantes en posicion fetal en los pasillos de la facultad de ciencias exactas fisicas y naturales, esto es debido al comienzo de la ultima semana de parciales del semestre la cual viene seguida de los recuperatorios y los finales.",TipoDeContenido::PUBLICACION);
-    Contenido* post3 = new Contenido(fecha,usuario1,"Prueba","Prueba",TipoDeContenido::PUBLICACION);
-    Contenido* comentario1 = new Contenido(fecha2,usuario2,"un horror che", TipoDeContenido::COMENTARIO);
-    Contenido* comentario2 = new Contenido(fecha2,usuario2,"Voten al ceu o me clavo una cuchara en el culo", TipoDeContenido::COMENTARIO);
-    Contenido* comentario3 = new Contenido(fecha2,usuario1,"Voten a nadie o me clavo una cuchara en el culo", TipoDeContenido::COMENTARIO);
-    Contenido* respuesta1 = new Contenido(fecha2,usuario2,"Voten al abm o yo se la clavo al de arriba", TipoDeContenido::RESPUESTA);
-   
-    
-    ArbolBinario<Contenido> *arbolito = new ArbolBinario<Contenido>();
-    arbolito->Agregar(post1);
-    arbolito->Agregar(post2);
-    arbolito->Comentar(post1, comentario1);
-    arbolito->Comentar(post1, comentario2);
-    arbolito->Comentar(post1, comentario3);
-    arbolito->Responder(post1,comentario2,respuesta1);
-    //arbolito->BorrarPost(post1);
-    comentario2->meGusta();
-    comentario2->meGusta();
-    comentario1->meGusta();
-    comentario1->nomeGusta();
-    //arbolito->Comentar(post3, comentario1);
-    arbolito->Imprimir();
-    arbolito->imprimirPublicacion(post2);
+
+Usuario* usuario1 = new Usuario("ImagineDragons4Ever");
+Usuario* usuario2 = new Usuario("LimitlessWanderer");
+Usuario* usuario3 = new Usuario("AguaConGasMono");
+Usuario* usuario4 = new Usuario("LasJeringasDeLaAbuela");
+Usuario* usuario5 = new Usuario("MeGustaMozaBacheyBetoVeni");
+Usuario* usuario6 = new Usuario("VTxSAR38Tr1");
+Usuario* usuario7 = new Usuario("HeadphoneHelmet");
+Usuario* usuario8 = new Usuario("TangoLover");
+Usuario* usuario9 = new Usuario("TotallyNotACultLeader");
+
+Contenido* post1 = new Contenido(fecha1,usuario1,"Bandas parecidas a Imagine Dragons?","Desde que era pibe me gusto esa banda, pero nunca me gusto no poder conectar porque no se tan bien el ingles, alguno sabe que puedo escuchar que sea muy parecido?",TipoDeContenido::PUBLICACION); post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();
+r_musica->Agregar(post1);
+Contenido* comentario1_1 = new Contenido(fecha1,usuario8,"Pero que vende patrias loco, escucha Por una cabeza man", TipoDeContenido::COMENTARIO); comentario1_1->meGusta();comentario1_1->meGusta();comentario1_1->meGusta();comentario1_1->meGusta();comentario1_1->meGusta();
+r_musica->Comentar(post1, comentario1_1);
+Contenido* comentario1_2 = new Contenido(fecha2,usuario6,"With BEtx3Prow You can win a lot of prizes FOR FREE! Simply scratch th hidden number in our web, put your mom's credit card info below the button that says \"totally not a scam\" and win a lot of dogeCoins or games that you cannot definitely find for free in any other place!", TipoDeContenido::COMENTARIO); comentario1_2->nomeGusta();comentario1_2->nomeGusta();comentario1_2->nomeGusta();comentario1_2->nomeGusta();
+r_musica->Comentar(post1, comentario1_2);
+Contenido* respuesta1_2_1 = new Contenido(fecha3,usuario1,"Me interesa lla t escribi bro", TipoDeContenido::RESPUESTA);
+r_musica->Responder(post1, comentario1_2, respuesta1_2_1);
+Contenido* comentario1_3 = new Contenido(fecha2,usuario9,"Nosotros tenemos un proyecto para crear ese tipo de musica! tambien para derrocar las instituciones actuales y crear histeria en masa, si te interesa mandame mensaje, ya casi termino el secundario", TipoDeContenido::COMENTARIO); comentario1_3->nomeGusta();
+r_musica->Comentar(post1, comentario1_3);
+
+Contenido* post2 = new Contenido(fecha3,usuario2,"Cuando sale el disco?","Cuando sale??",TipoDeContenido::PUBLICACION); post2->nomeGusta();
+r_musica->Agregar(post2);
+Contenido* comentario2_1 = new Contenido(fecha3,usuario7,"Che man no dijiste que disco", TipoDeContenido::COMENTARIO); comentario2_1->meGusta();
+r_musica->Comentar(post2, comentario2_1);
+Contenido* respuesta2_1_1 = new Contenido(fecha4,usuario7,"Nono asi se llama el disco, \"Cuando sale??\"", TipoDeContenido::RESPUESTA); respuesta2_1_1->meGusta();respuesta2_1_1->meGusta();respuesta2_1_1->meGusta();
+r_musica->Responder(post2, comentario2_1,respuesta2_1_1);
+
+
+Contenido* post3 = new Contenido(fecha4,usuario3,"Que feo que te gusten los redondos","No puedo creer que haya gente que tenga gustos distintos a los mios, que no saben tener buen gusto? Todos saben que la mejor banda es soda, el mejor vino es el patero y la comida mas rica es el helado de mondongo",TipoDeContenido::PUBLICACION); post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();post3->nomeGusta();
+r_musica->Agregar(post3);
+Contenido* comentario3_1 = new Contenido(fecha4,usuario4,"Que decis man? como no te van a gustar los redondos? Que cuadrado...", TipoDeContenido::COMENTARIO);
+r_musica->Comentar(post3,comentario3_1);
+Contenido* comentario3_2 = new Contenido(fecha4,usuario4,"Como me lo vas a insultar asi al ricota!! encima hizo el tema del mundial!! MUCHAAACHOSSSS", TipoDeContenido::COMENTARIO);comentario3_2->nomeGusta();
+r_musica->Comentar(post3,comentario3_2);   
+    r_musica->Imprimir();
+
 
 
 };
