@@ -147,27 +147,45 @@ template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenid
 template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
 {
 
-            Contenido *primero = lista->cabeza();
-            Contenido *nuevo = lista->cabeza();
-            Contenido *aux;
-            NodoL<Contenido*> *mov = lista->getCzo()->get_next();
+    //         Contenido *primero = lista->cabeza();
+    //         Contenido *nuevo = lista->cabeza();
+    //         Contenido *aux;
+    //         NodoL<Contenido*> *mov = lista->getCzo()->get_next();
             
-    if(lista != NULL){
-        if(lista->size() > 1){
-            int MAX = lista->size();
-            for(int i = 1; i<MAX; i++){
-                if(mov->get_dato()->getFecha()->esMayor(nuevo->getFecha())){
-                    nuevo = mov->get_dato();
-                }
-                mov = mov->get_next();
+    // if(lista != NULL){
+    //     if(lista->size() > 1){
+    //         int MAX = lista->size();
+    //         for(int i = 1; i<MAX; i++){
+    //             if(mov->get_dato()->getFecha()->esMayor(nuevo->getFecha())){
+    //                 nuevo = mov->get_dato();
+    //             }
+    //             mov = mov->get_next();
+    //         }
+    //         aux = primero;
+    //         primero = nuevo;
+    //         nuevo = aux;
+    //         ordenarParticipaciones(lista->resto());
+
+
+    //     }
+    // }
+    if (lista != NULL && lista->size() > 1) {
+        NodoL<Contenido*>* primero = lista->getCzo();
+        NodoL<Contenido*>* nuevo = primero;
+        NodoL<Contenido*>* mov = nuevo->get_next();
+
+        int MAX = lista->size();
+        for(int i = 1; i<MAX; i++) {
+            if (mov->get_dato()->getFecha()->esMayor(nuevo->get_dato()->getFecha())) {
+                nuevo = mov;
             }
-            aux = primero;
-            primero = nuevo;
-            nuevo = aux;
-            ordenarParticipaciones(lista->resto());
-
-
+            mov = mov->get_next();
         }
+        Contenido* aux = primero->get_dato();
+        primero->set_dato(nuevo->get_dato());
+        nuevo->set_dato(aux);
+        ordenarParticipaciones(lista->resto());
+
     }
 }
 

@@ -53,10 +53,11 @@ class Contenido
         Lista<Usuario*>* getParticipantes(){return participantes;}
         void imprimir()
         {
-            cout<<"-------------------------\n"<<tipo<<endl<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
+            cout<<"-----------------------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
             usuario->imprimir();
             fecha->imprimir();
-            cout<<"-------------------------"<<endl;  
+            cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;  
         };
         void agregarParticipante(Usuario* participante){participantes->add(participante);}
 };
