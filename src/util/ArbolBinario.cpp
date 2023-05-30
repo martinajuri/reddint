@@ -87,7 +87,7 @@ template <class T> void ArbolBinario<T>:: imprimirPublicaciones(Nodo<T>* raizAux
     {
         Contenido* contAux = raizAux->dato;
         contAux->imprimir();
-        imprimir(raizAux->hijoDer);
+        imprimirPublicaciones(raizAux->hijoDer);
     }
 
 }
