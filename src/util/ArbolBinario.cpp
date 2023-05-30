@@ -155,10 +155,11 @@ template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido
     if(lista != NULL){
         if(lista->size() > 1){
             int MAX = lista->size();
-            for(int i = 0; i<MAX; i++){
-                if(mov->get_dato()->getFecha()->esMayor(primero->getFecha())){
+            for(int i = 1; i<MAX; i++){
+                if(mov->get_dato()->getFecha()->esMayor(nuevo->getFecha())){
                     nuevo = mov->get_dato();
                 }
+                mov = mov->get_next();
             }
             aux = primero;
             primero = nuevo;

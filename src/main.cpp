@@ -10,7 +10,7 @@ using namespace std;
 int main(){
     Fecha* fecha = new Fecha(15,7,2022);
     Fecha* fecha2 = new Fecha(20,8,2023);
-    Fecha* fecha3 = new Fecha(15,9,2023);
+    Fecha* fecha3 = new Fecha(15,9,2024);
     Usuario* usuario1 = new Usuario("FortFan23");
     Usuario* usuario2 = new Usuario("ABM");
 
