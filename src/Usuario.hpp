@@ -16,6 +16,7 @@ class Usuario
         Usuario(string nombre) { this->nombre = nombre;}
         Usuario(){};
         
+        string getNombre(){return nombre;};
         void imprimir(){ cout << nombre<<endl;};
 };
 #endif

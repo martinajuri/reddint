@@ -3,7 +3,7 @@
 #include "Usuario.hpp"
 #include "Contenido.hpp"
 #include "util\ArbolBinario.cpp"
-
+#include "util\Lista.hpp"
 
 using namespace std;
 
@@ -13,8 +13,12 @@ Contenido* ingresarPublicacion(Fecha* fecha, Usuario* usuario);
 Contenido* ingresarContenido(Fecha* fecha, Usuario* usuario, TipoDeContenido tipo);
 Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Contenido* respuesta);
 void bienvenida();
+bool verificarUsuario(Usuario* usuario, Lista<Usuario*>* lista);
+
 
 int main(){
+
+    Lista<Usuario*> *usuarios = new Lista<Usuario*>();
     bienvenida();
     
     cout << "Haz la primera publicacion!! "<< endl;
@@ -22,7 +26,8 @@ int main(){
     
     cout << "Ingresa el usuario" << endl;
     Usuario* usuario = ingresarUsuario();
-    
+    usuarios->add(usuario);
+
     cout << "Ingresa la fecha" << endl;
     Fecha* fecha = ingresarFecha();
     
@@ -37,6 +42,7 @@ int main(){
         char opcion;
         Contenido *comentario;
         Contenido *respuesta;
+        Usuario *usuarioElegido;
         cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
         cin >> opcion;
         switch (opcion)
@@ -66,9 +72,16 @@ int main(){
             fecha->imprimir();
             break;
         case 'F':
-            usuario = ingresarUsuario();
-            cout << "Usuario cambiado a: ";
-            usuario->imprimir();
+            usuarioElegido = ingresarUsuario();
+            if(!verificarUsuario(usuarioElegido, usuarios)){
+                cout << "Bienvenido a reddint " << usuarioElegido->getNombre() << "!!!" << endl;
+                usuarios->add(usuarioElegido);
+                usuario = usuarioElegido;
+            }
+            else{
+                cout << "Hola de nuevo " << usuarioElegido->getNombre() << endl;
+                usuario = usuarioElegido;
+            }
             break;
         case 'G':
             reddint->ImprimirPublicacion(publicacion);
@@ -114,7 +127,7 @@ Usuario* ingresarUsuario()
 {
     string nombre;
     cout << "Nombre: ";
-    getline(cin.ignore(), nombre);
+    cin >> nombre;
     return new Usuario(nombre);
 }
 
@@ -154,7 +167,7 @@ Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Conten
     }
 }
 void bienvenida(){
-    cout << "Bienvenido a Reddin´t" << endl ;
+    cout << "-----------------------Bienvenido a Reddin´t-----------------------" << endl ;
     cout<<R"(                                                                                                    
                                                                    &@@@@@.                          
                                                    @@@@@@@@@@@@/  @@@@@@@@@@@@@                     
@@ -184,4 +197,14 @@ void bienvenida(){
                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                               
                                     .@@@@@@@@@@@@@@@@@@@@@@@@*                                      
                                                                                                     )"<<endl;
+}
+
+bool verificarUsuario(Usuario* usuario, Lista<Usuario*>* lista){
+
+    if(!lista->esvacia()){
+        if(usuario->getNombre() == lista->cabeza()->getNombre()){return true;} //devuelve true si el usuario ya existe en la lista
+        else{return verificarUsuario(usuario, lista->resto());} //sino sigue recorriendo la lista
+    }
+    else{return false;}
+
 }
