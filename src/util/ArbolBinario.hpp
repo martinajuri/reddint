@@ -23,6 +23,7 @@ template <class T> class  ArbolBinario
         Contenido* comentarioMasVotado(Nodo<T>*& raizAux);
         void participacionesPorUsuario(Nodo<Contenido>*& raizAux, Usuario* user, Lista<Contenido*>* lista);
         void ordenarParticipaciones(Lista<Contenido*>* lista);
+        void imprimirPublicaciones(Nodo<T>* raizAux);
 
     public:
         ArbolBinario() { raiz = NULL; };
@@ -31,6 +32,7 @@ template <class T> class  ArbolBinario
         void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());newComentario->setTitulo("Comentario a: " + postAComentar->getTitulo());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
         void Imprimir(){imprimir(raiz);};
+        void ImprimirPublicaciones(){imprimirPublicaciones(raiz);};
         void ImprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
         int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);

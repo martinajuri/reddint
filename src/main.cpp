@@ -43,7 +43,7 @@ int main(){
         Contenido *comentario;
         Contenido *respuesta;
         Usuario *usuarioElegido;
-        cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
+        cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<< "L) Ver publicaciones" <<endl<<"X) Salir"<<endl;
         cin >> opcion;
         switch (opcion)
         {
@@ -57,6 +57,7 @@ int main(){
             cout << "Publicado" << endl;
             break;
         case 'C':
+
             comentario = ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO);
             reddint->Comentar(publicacion, comentario);
             break;
@@ -74,7 +75,7 @@ int main(){
         case 'F':
             usuarioElegido = ingresarUsuario();
             if(!verificarUsuario(usuarioElegido, usuarios)){
-                cout << "Bienvenido a reddint " << usuarioElegido->getNombre() << "!!!" << endl;
+                cout << "Bienvenido/a a reddint " << usuarioElegido->getNombre() << "!!!" << endl;
                 usuarios->add(usuarioElegido);
                 usuario = usuarioElegido;
             }
@@ -100,6 +101,10 @@ int main(){
         case 'K':
             reddint->BorrarPost(publicacion);
             cout << "Publicacion eliminada" << endl;
+            break;
+        case 'L':
+            cout << "PUBLICACIONES DEL MURO" <<endl;
+            reddint->ImprimirPublicaciones();
             break;
         case 'X':
             exit(0);
@@ -166,8 +171,21 @@ Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Conten
         break;
     }
 }
+
+bool verificarUsuario(Usuario* usuario, Lista<Usuario*>* lista){
+
+    if(!lista->esvacia()){
+        if(usuario->getNombre() == lista->cabeza()->getNombre()){return true;} //devuelve true si el usuario ya existe en la lista
+        else{return verificarUsuario(usuario, lista->resto());} //sino sigue recorriendo la lista
+    }
+    else{return false;}
+
+}
+
+
+
 void bienvenida(){
-    cout << "-----------------------Bienvenido a Reddin´t-----------------------" << endl ;
+    cout << "-----------------------BIENVENIDO/A A REDDINT-----------------------" << endl ;
     cout<<R"(                                                                                                    
                                                                    &@@@@@.                          
                                                    @@@@@@@@@@@@/  @@@@@@@@@@@@@                     
@@ -199,12 +217,3 @@ void bienvenida(){
                                                                                                     )"<<endl;
 }
 
-bool verificarUsuario(Usuario* usuario, Lista<Usuario*>* lista){
-
-    if(!lista->esvacia()){
-        if(usuario->getNombre() == lista->cabeza()->getNombre()){return true;} //devuelve true si el usuario ya existe en la lista
-        else{return verificarUsuario(usuario, lista->resto());} //sino sigue recorriendo la lista
-    }
-    else{return false;}
-
-}
