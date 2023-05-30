@@ -36,18 +36,18 @@ class Fecha
         }
         
         //Devuelve true si la fecha es mayor a la ingresada por parametro
-        bool esMayor(Fecha otraFecha) {
-            if (anio > otraFecha.anio)
+        bool esMayor(Fecha *otraFecha) {
+            if (anio > otraFecha->anio)
                 return true;
-            else if (anio < otraFecha.anio)
+            else if (anio < otraFecha->anio)
                 return false;
 
-            if (mes > otraFecha.mes)
+            if (mes > otraFecha->mes)
                 return true;
-            else if (mes < otraFecha.mes)
+            else if (mes < otraFecha->mes)
                 return false;
 
-            if (dia > otraFecha.dia)
+            if (dia > otraFecha->dia)
                 return true;
             else
                 return false;

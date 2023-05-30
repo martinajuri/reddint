@@ -29,6 +29,7 @@ public:
     //~Lista(void);
     void add(T d); //sumar nodoLs a la lista
     bool esvacia(void);
+    NodoL<T>* getCzo(){return czo;}
     T cabeza(void); //retorna el dato del primer nodoL
     Lista* resto(void); //retorna el puntero al "resto" de la lista
                         //resto= lo que queda de la lista sin la cabeza

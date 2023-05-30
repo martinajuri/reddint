@@ -2,6 +2,7 @@
 #define ARBOLBINARIO_C
 
 #include "ArbolBinario.hpp"
+
 using namespace std;
 
 //---------------------------------------------PRIVADOS DE AGREGADO----------------------------------------------------------------------------------------
@@ -145,14 +146,28 @@ template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenid
 //Ordena la lista por orden de publicacion
 template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
 {
-    // if(lista != NULL){
-    //     if(lista->size() > 1){
-    //         Contenido *primero = lista->cabeza();
-    //         Contenido *menor = lista->cabeza();
-    //         Nodo<T> *pos = lista->czo;
 
-    //     }
-    // }
+            Contenido *primero = lista->cabeza();
+            Contenido *nuevo = lista->cabeza();
+            Contenido *aux;
+            NodoL<Contenido*> *mov = lista->getCzo()->get_next();
+            
+    if(lista != NULL){
+        if(lista->size() > 1){
+            int MAX = lista->size();
+            for(int i = 0; i<MAX; i++){
+                if(mov->get_dato()->getFecha()->esMayor(primero->getFecha())){
+                    nuevo = mov->get_dato();
+                }
+            }
+            aux = primero;
+            primero = nuevo;
+            nuevo = aux;
+            ordenarParticipaciones(lista->resto());
+
+
+        }
+    }
 }
 
 //-----------------------------------------------PRIVADOS EXTRA--------------------------------------------------------------------------------------

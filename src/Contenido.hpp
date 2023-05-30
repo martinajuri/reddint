@@ -46,6 +46,7 @@ class Contenido
         void meGusta(){valoracion++;};
         void nomeGusta(){valoracion--;};
         int getValoracion(){return valoracion;};
+        Fecha* getFecha(){return fecha;}
         string getTitulo(){return titulo;};
         void setTitulo(string nuevoTitulo){titulo = nuevoTitulo;};
         Usuario* getUsuario(){return usuario;};
