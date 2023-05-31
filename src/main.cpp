@@ -13,6 +13,7 @@ Contenido* ingresarPublicacion(Fecha* fecha, Usuario* usuario);
 Contenido* ingresarContenido(Fecha* fecha, Usuario* usuario, TipoDeContenido tipo);
 Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Contenido* respuesta);
 void bienvenida();
+void panelDeUsuario(Usuario *usuario, ArbolBinario<Contenido> *arbol);
 
 int main(){
     bienvenida();
@@ -162,6 +163,34 @@ Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Conten
         break;
     }
 }
+
+void panelDeUsuario(Usuario *usuario, ArbolBinario<Contenido> *arbol){
+
+    cout << "Entrando al panel de usuario..." << endl;
+    cout << "Usuario: ";
+    usuario->imprimir();
+    char opcion;
+
+    cout << "Que quiere hacer? \n A) Participaciones \n B) Cambiar de usuario \n Presione cualquier letra para volver a inicio \n";
+    cin >> opcion;
+
+    switch (toupper(opcion))
+    {
+    case 'A':
+        arbol->ImprimirParticipaciones(usuario);
+        break;
+    case 'B':
+        usuario = ingresarUsuario();
+        break;  
+    default:
+        break;
+    }
+
+
+
+}
+
+
 void bienvenida(){
     cout << "Bienvenido a Reddin´t" << endl ;
     cout<<R"(                                                                                                    
