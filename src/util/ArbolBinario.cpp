@@ -39,7 +39,7 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
     nodoAux = nodoAlContenido(raizAux, postAComentar);
     if(nodoAux != NULL)
     {
-        comentar(raizAux->hijoIzq, comentarioAResponder, newRespuesta);
+        comentar(nodoAux->hijoIzq, comentarioAResponder, newRespuesta);
     }else
     {
         cout << "No existe el comentario a responder" << endl;
