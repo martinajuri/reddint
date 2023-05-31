@@ -21,19 +21,6 @@ class Fecha
         }
         Fecha(){}
         
-        bool fechaValida (int d, int m, int a){
-
-            if(d <= 31 && d >= 1 && m <= 12 && m >= 1){
-                return true;
-            }else if (a > 5000){
-                cout << "No hay mas de 5000 anios en esta linea temporal"<< endl;
-                return false;
-            }
-            else{
-                return false;
-            }
-
-        }
         
         //Devuelve true si la fecha es mayor a la ingresada por parametro
         bool esMayor(Fecha *otraFecha) {
