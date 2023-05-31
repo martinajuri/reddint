@@ -80,6 +80,15 @@ template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
         imprimir(raizAux->hijoDer);
     }
 }
+template <class T> void ArbolBinario<T>:: imprimirP(Nodo<T>* raizAux)
+{
+    if (raizAux != NULL) 
+    {
+        Contenido* contAux = raizAux->dato;
+        contAux->imprimir();
+        imprimir(raizAux->hijoDer);
+    }
+}
 
 //Devuelve un puntero al comentario mas votado.
 template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& raizAux)

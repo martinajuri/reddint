@@ -14,6 +14,7 @@ template <class T> class  ArbolBinario
         Nodo<T> * raiz, * nodoAux;
         void agregar(Nodo<T>*& raizAux, Contenido* newPost);
         void imprimir(Nodo<T>* raizAux);
+        void imprimirP(Nodo<T>* raizAux);
         void comentar(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* newComentario);
         void responder(Nodo<T>*& raizAux, Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta);
         void borrarPost(Nodo<T>*& raizAux ,Contenido* post);
@@ -31,6 +32,7 @@ template <class T> class  ArbolBinario
         void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());newComentario->setTitulo("Comentario a: " + postAComentar->getTitulo());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
         void Imprimir(){imprimir(raiz);};
+        void ImprimirP(){imprimirP(raiz);};
         void ImprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
         int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);

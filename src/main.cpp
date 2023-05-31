@@ -16,96 +16,47 @@ void bienvenida();
 
 int main(){
     bienvenida();
-    
-    cout << "Haz la primera publicacion!! "<< endl;
     ArbolBinario<Contenido>* reddint = new ArbolBinario<Contenido>();
-    
+    bool on = true;
+    char opcion;
+    //Primero debes iniciar sesión
+    cout<<"Inicia sesion"<<endl;
     cout << "Ingresa el usuario" << endl;
-    Usuario* usuario = ingresarUsuario();
+    Usuario* usuarioActual = ingresarUsuario();
     
-    cout << "Ingresa la fecha" << endl;
-    Fecha* fecha = ingresarFecha();
+    cout << "Ingresa la fecha de hoy" << endl;
+    Fecha* fechaActual = ingresarFecha();
     
-    cout << "Ingresa la publicacion" << endl;
-    Contenido* publicacion = ingresarPublicacion(fecha, usuario);
-    
-    cout << "Publicando..." << endl;
-    reddint->Agregar(publicacion);
-    cout << "Publicado" << endl;
 
-    while(true){
-        char opcion;
-        Contenido *comentario;
-        Contenido *respuesta;
-        cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
-        cin >> opcion;
-        switch (opcion)
-        {
+
+    while(on){
+      cout<<"Menu"<<endl<<"A. Ir a publicaciones"<<endl<<"B. Publicar"<<endl<<"salir"<<endl;
+      cin>>opcion;
+      switch (opcion)
+      {
         case 'A':
-            reddint->Imprimir();
-            break;
+        reddint->ImprimirP();
+        break;
         case 'B':
-            publicacion = ingresarPublicacion(fecha, usuario);
-            cout << "Publicando..." << endl;
-            reddint->Agregar(publicacion);
-            cout << "Publicado" << endl;
-            break;
+        reddint->Agregar(ingresarPublicacion(fechaActual,usuarioActual));
+        break;
         case 'C':
-            comentario = ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO);
-            reddint->Comentar(publicacion, comentario);
-            break;
-        case 'D':
-            respuesta = ingresarContenido(fecha, usuario, TipoDeContenido::RESPUESTA);
-            cout << "Publicando..." << endl;
-            reddint->Responder(publicacion, comentario, respuesta);
-            cout << "Publicado" << endl;
-            break;
-        case 'E':
-            fecha = ingresarFecha();
-            cout << "Fecha cambiada a: ";
-            fecha->imprimir();
-            break;
-        case 'F':
-            usuario = ingresarUsuario();
-            cout << "Usuario cambiado a: ";
-            usuario->imprimir();
-            break;
-        case 'G':
-            reddint->ImprimirPublicacion(publicacion);
-            break;
-        case 'H':
-            reddint->ImprimirParticipaciones(usuario);
-            break;
-        case 'I':
-            elegirContenido(publicacion, comentario, respuesta)->meGusta();
-            cout << "Me gusta realizado" << endl;
-            break;
-        case 'J':
-            elegirContenido(publicacion, comentario, respuesta)->nomeGusta();
-            cout << "No me gusta realizado" << endl;
-            break;
-        case 'K':
-            reddint->BorrarPost(publicacion);
-            cout << "Publicacion eliminada" << endl;
-            break;
-        case 'X':
-            exit(0);
-            break;
-        default:
-            break;
-        }
-
-    }
+        on = false;
+        break;
+      default:
+        break;
+      }
 };
+}
 
 Fecha* ingresarFecha()
 {
     int d, m, a;
-    cout <<"Dia: ";
+    cout <<"Dia (DD): ";
     cin >> d;
-    cout <<"Mes: ";
+    cout <<"Mes (MM): ";
     cin >> m;
-    cout << "Año: ";
+    cout << "Año (YYYY): ";
     cin >> a;
     return new Fecha(d,m,a);
 }
@@ -113,7 +64,7 @@ Fecha* ingresarFecha()
 Usuario* ingresarUsuario()
 {
     string nombre;
-    cout << "Nombre: ";
+    cout << "Nombre de usuario: ";
     getline(cin.ignore(), nombre);
     return new Usuario(nombre);
 }
@@ -154,7 +105,7 @@ Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Conten
     }
 }
 void bienvenida(){
-    cout << "Bienvenido a Reddin´t" << endl ;
+    cout << "Bienvenido a Reddin't" << endl ;
     cout<<R"(                                                                                                    
                                                                    &@@@@@.                          
                                                    @@@@@@@@@@@@/  @@@@@@@@@@@@@                     
