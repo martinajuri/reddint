@@ -17,7 +17,7 @@ class Fecha
             //validar fecha
             dia = d;
             mes = m;
-            anio = a;
+            anio = a;  
         }
         Fecha(){}
         

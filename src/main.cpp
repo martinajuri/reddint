@@ -28,7 +28,7 @@ int main(){
     Usuario* usuario = ingresarUsuario();
     usuarios->add(usuario);
 
-    cout << "Ingresa la fecha" << endl;
+    cout << "Ingresa la fecha (En formato DD/MM/YYYY)" << endl;
     Fecha* fecha = ingresarFecha();
     
     cout << "Ingresa la publicacion" << endl;
@@ -119,12 +119,22 @@ int main(){
 Fecha* ingresarFecha()
 {
     int d, m, a;
-    cout <<"Dia: ";
-    cin >> d;
-    cout <<"Mes: ";
-    cin >> m;
-    cout << "Año: ";
-    cin >> a;
+    bool valido = false;
+    while(valido == false){
+        
+        cout <<"Dia: ";
+        cin >> d;
+        cout <<"Mes: ";
+        cin >> m;
+        cout << "Año: ";
+        cin >> a;
+
+        if(d <= 31 && d >= 1 && m <= 12 && m >= 1){
+            valido = true;
+        }else{
+            cout << "Fecha invalida, ingrese una fecha valida!!!" << endl << endl;
+        }
+    }
     return new Fecha(d,m,a);
 }
 
