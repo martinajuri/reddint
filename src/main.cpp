@@ -33,9 +33,6 @@ int main(){
     Usuario* usuarioActual = ingresarUsuario();
     cout << "Ingresa la fecha de hoy" << endl;
     Fecha* fechaActual = ingresarFecha();
-    Contenido* publicacionActual;
-    Contenido* comentarioActual;
-    Contenido* respuestaActual;
 
     //menu1 - que subreddint
     char opcion1; 
@@ -195,7 +192,7 @@ void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fech
 
 void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, Fecha* fecha)
 {
-    int c=0, r=0;
+    int c=0;
     cout <<"\n";
     Contenido * publicacion = arbol->buscarContenidoPorNumero(p,0,0);
     if(publicacion == NULL){
@@ -283,14 +280,12 @@ void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usu
 ArbolBinario<Contenido>* crearSubredditMusica()
 {   
     ArbolBinario<Contenido>* r_musica = new ArbolBinario<Contenido>();
+    
     Fecha* fecha1 = new Fecha(20,3,2023);
     Fecha* fecha2 = new Fecha(21,3,2023);
     Fecha* fecha3 = new Fecha(22,3,2023);
     Fecha* fecha4 = new Fecha(1,4,2023);
-    Fecha* fecha5 = new Fecha(5,4,2023);
-    Fecha* fecha6 = new Fecha(6,4,2023);
-    Fecha* fecha7 = new Fecha(19,5,2023);
-    Fecha* fecha8 = new Fecha(20,5,2023);
+
     Usuario* usuario1 = new Usuario("ImagineDragons4Ever"); listaDeUsuarios->add(usuario1);
     Usuario* usuario2 = new Usuario("LimitlessWanderer"); listaDeUsuarios->add(usuario2);
     Usuario* usuario3 = new Usuario("AguaConGasMono"); listaDeUsuarios->add(usuario3);
