@@ -17,7 +17,8 @@ ArbolBinario<Contenido>* crearSubredditMusica();
 void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fecha* fecha);
 void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, Fecha* fecha);
 void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usuario, Fecha* fecha);
-Usuario* verificarUsuario(Usuario* usuario, Lista<Usuario>* listaUsuarios);
+Usuario* verificarUsuario(string usuario, Lista<Usuario*>* listaUsuarios);
+Lista<Usuario*> *listaDeUsuarios = new Lista<Usuario*>();
 
 int main(){
 
@@ -25,7 +26,6 @@ int main(){
     ArbolBinario<Contenido>* subreddint_vacio = new ArbolBinario<Contenido>();
     ArbolBinario<Contenido>* subreddint_musica = crearSubredditMusica();
     ArbolBinario<Contenido>* reddint;
-    Lista<Usuario*> *listaDeUsuarios = new Lista<Usuario*>();
     char opcion;
     //Antemenu
     cout<<dye::aqua("Inicia sesion")<<endl;
@@ -78,10 +78,10 @@ int main(){
 };// Fin del main
 
 
-Usuario* verificarUsuario(Usuario *usuario, Lista<Usuario> *listaUsuarios){
+Usuario* verificarUsuario(string usuario, Lista<Usuario*> *listaUsuarios){
 
     if(!listaUsuarios->esvacia()){
-        if(usuario->getNombre() == listaUsuarios->cabeza().getNombre()){return usuario;} //devuelve true si el usuario ya existe en la lista
+        if(usuario == (listaUsuarios->cabeza())->getNombre()){return listaUsuarios->cabeza();} //devuelve true si el usuario ya existe en la lista
         else{return verificarUsuario(usuario, listaUsuarios->resto());} //sino sigue recorriendo la lista
     }
     else{return NULL;}
@@ -114,7 +114,16 @@ Usuario* ingresarUsuario()
     string nombre;
     cout << "Nombre: ";
     cin >> nombre;
-    return new Usuario(nombre);
+    if(verificarUsuario(nombre, listaDeUsuarios) == NULL){
+        Usuario *usuarioAux = new Usuario(nombre);
+        listaDeUsuarios->add(usuarioAux);
+        cout << "Bienvenido a reddint, " << nombre << endl;
+        return usuarioAux;
+    }else{
+        cout << "Bienvenido de nuevo, " << nombre << endl;
+        return verificarUsuario(nombre, listaDeUsuarios);
+    }
+    
 }
 
 Contenido* ingresarPublicacion(Fecha* fecha, Usuario* usuario)
@@ -151,8 +160,8 @@ void panelDeUsuario(Usuario*& usuario, ArbolBinario<Contenido> *arbol){
         arbol->ImprimirParticipaciones(usuario);
         break;
     case 'B':
-        
         usuario = ingresarUsuario();
+        
         break;  
     default:
         break;
@@ -278,15 +287,15 @@ ArbolBinario<Contenido>* crearSubredditMusica()
     Fecha* fecha6 = new Fecha(6,4,2023);
     Fecha* fecha7 = new Fecha(19,5,2023);
     Fecha* fecha8 = new Fecha(20,5,2023);
-    Usuario* usuario1 = new Usuario("ImagineDragons4Ever");
-    Usuario* usuario2 = new Usuario("LimitlessWanderer");
-    Usuario* usuario3 = new Usuario("AguaConGasMono");
-    Usuario* usuario4 = new Usuario("LasJeringasDeLaAbuela");
-    Usuario* usuario5 = new Usuario("MeGustaMozaBacheyBetoVeni");
-    Usuario* usuario6 = new Usuario("VTxSAR38Tr1");
-    Usuario* usuario7 = new Usuario("HeadphoneHelmet");
-    Usuario* usuario8 = new Usuario("TangoLover");
-    Usuario* usuario9 = new Usuario("TotallyNotACultLeader");
+    Usuario* usuario1 = new Usuario("ImagineDragons4Ever"); listaDeUsuarios->add(usuario1);
+    Usuario* usuario2 = new Usuario("LimitlessWanderer"); listaDeUsuarios->add(usuario2);
+    Usuario* usuario3 = new Usuario("AguaConGasMono"); listaDeUsuarios->add(usuario3);
+    Usuario* usuario4 = new Usuario("LasJeringasDeLaAbuela"); listaDeUsuarios->add(usuario4);
+    Usuario* usuario5 = new Usuario("MeGustaMozaBacheyBetoVeni"); listaDeUsuarios->add(usuario5);
+    Usuario* usuario6 = new Usuario("VTxSAR38Tr1"); listaDeUsuarios->add(usuario6);
+    Usuario* usuario7 = new Usuario("HeadphoneHelmet"); listaDeUsuarios->add(usuario7);
+    Usuario* usuario8 = new Usuario("TangoLover"); listaDeUsuarios->add(usuario8);
+    Usuario* usuario9 = new Usuario("TotallyNotACultLeader"); listaDeUsuarios->add(usuario9);
 
     Contenido* post1 = new Contenido(fecha1,usuario1,"Bandas parecidas a Imagine Dragons?","Desde que era pibe me gusto esa banda, pero nunca me gusto no poder conectar porque no se tan bien el ingles, alguno sabe que puedo escuchar que sea muy parecido?",TipoDeContenido::PUBLICACION); post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();
     r_musica->Agregar(post1);
