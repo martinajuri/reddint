@@ -236,7 +236,7 @@ void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, 
     cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
     arbol->ImprimirNivel(publicacion);
     char opcion;
-    cout << dye::aqua("Panel de Comentarios\n¿Que quieres hacer? \n A) Comentar  \n B) Dar me gusta a la publicacion \n C) Dar no me gusta a la publicacion\n D) Elegir comentario\n");
+    cout << dye::aqua("Panel de Comentarios\n¿Que quieres hacer? \n A) Comentar  \n B) Dar me gusta a la publicacion \n C) Dar no me gusta a la publicacion\n D) Elegir comentario\n E) Borrar publicacion\n");
     cin >>opcion;
     cout<<"\n";
     switch (toupper(opcion))
@@ -256,7 +256,12 @@ void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, 
         cout << "Ingrese el numero: ";
         cin >> c;
         panelDeRespuestas(arbol, p, c, usuario, fecha);
-        break;             
+        break;   
+    case 'E':
+        cout<< "Borrando...\n";
+        arbol->BorrarPost(publicacion);
+        cout<<dye::red("Publicacion borrada\n");
+        break;
     default:
         break;
     }
@@ -273,10 +278,10 @@ void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usu
     comentario->imprimir();
     cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
     arbol->ImprimirNivel(comentario);
-    cout << dye::aqua("Panel de Respuestas\n¿Que quieres hacer? \n A) Me gusta \n B) No me gusta \n C) Responder \n D)Ingresar a una Respuesta \n");
+    cout << dye::aqua("Panel de Respuestas\n¿Que quieres hacer? \n A) Poner Me gusta al comentario \n B) Poner No me gusta al comentario \n C) Responder \n D) Ingresar a una Respuesta \n");
     cin >> opcion;
     cout<<"\n";
-    switch (opcion)
+    switch (toupper(opcion))
     {
     case 'A':
         comentario->meGusta();

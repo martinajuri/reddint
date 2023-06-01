@@ -4,6 +4,7 @@
 #include "Usuario.hpp"
 #include "tipoDeContenido.hpp"
 #include "util\Lista.hpp"
+#include "color.hpp"
 
 using namespace std;
 
@@ -53,11 +54,9 @@ class Contenido
         Lista<Usuario*>* getParticipantes(){return participantes;}
         void imprimir()
         {
-            //cout<<"-----------------------------------------------------------------------------------------------------------------------"<<endl;
-            cout<<titulo <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
+            cout<<dye::purple(titulo) <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
             usuario->imprimir();
             fecha->imprimir();
-            //cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;  
         };
         void agregarParticipante(Usuario* participante){participantes->add(participante);}
 };

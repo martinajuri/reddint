@@ -186,20 +186,41 @@ template <class T> Contenido* ArbolBinario<T>::masVotado(Contenido* contenido1, 
     else return contenido1;
 }
 
-//Devuelve un puntero al nodo que contiene la publicacion. Devuelve NULL si la publicacion no se encuentra
+//Devuelve un puntero al nodo que contiene el contenido. Devuelve NULL si la publicacion no se encuentra
 template <class T> Nodo<T>* ArbolBinario<T>::nodoAlContenido(Nodo<T>*& raizAux, Contenido* post)
 {
-    if(raizAux->dato == post)
-    {
-        return raizAux;
-    }
-    else if(raizAux->hijoDer==NULL)
-    {
+    // if(raizAux->dato == post)
+    // {
+    //     return raizAux;
+    // }
+    // else if(raizAux->hijoDer==NULL||raizAux->hijoIzq==NULL)
+    // {
+    //     return NULL;
+    // }
+    // else{
+
+    //    return nodoAlContenido(raizAux->hijoDer, post);
+    // }
+    if (raizAux == NULL) {
         return NULL;
     }
-    else{
-       return nodoAlContenido(raizAux->hijoDer, post);
+
+    // Buscar en los hijos derechos de cada nodo
+    nodoAux = NULL;
+    if (raizAux->dato == post) {
+        nodoAux = raizAux;
+    } else {
+        nodoAux = nodoAlContenido(raizAux->hijoDer, post);
     }
+
+    // Si se encontró en los hijos derechos, retornar el nodo encontrado
+    if (nodoAux != NULL) {
+        return nodoAux;
+    }
+
+    // Si no se encontró en los hijos derechos, buscar en los subárboles de los hijos izquierdos
+    return nodoAlContenido(raizAux->hijoIzq, post);
+
 }
 
 //-------------------------------------------------PUBLICOS------------------------------------------------------------------------------------
@@ -283,7 +304,7 @@ template <class T> Contenido* ArbolBinario<T>::buscarContenidoPorNumero(int p, i
     nodoAux = raiz;
     for (int i = 1; i < p; i++)
     {
-        nodoAux = nodoAux->hijoDer;  
+        if(nodoAux->hijoDer!=NULL) nodoAux = nodoAux->hijoDer;  
     }
     if(c!=0)nodoAux = nodoAux->hijoIzq; 
     for (int j = 1; j < c; j++)

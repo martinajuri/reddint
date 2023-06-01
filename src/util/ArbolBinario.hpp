@@ -44,7 +44,11 @@ template <class T> class  ArbolBinario
         Usuario* UsuarioMasParticipativo(Contenido* post);
         void ImprimirParticipaciones(Usuario* user);
         void ImprimirPublicaciones(){imprimirPublicaciones(raiz);};
-        void ImprimirNivel(Contenido* contenido){Nodo<Contenido>* contenidoAux = nodoAlContenido(raiz, contenido)->hijoIzq; if(contenidoAux) imprimirNivel(contenidoAux);};
+        void ImprimirNivel(Contenido* contenido)
+        {
+            Nodo<Contenido>* contenidoAux = nodoAlContenido(raiz, contenido)->hijoIzq;
+            if(contenidoAux!=NULL) imprimirNivel(contenidoAux);
+         };
         Contenido* buscarContenidoPorNumero(int p, int c, int r);
         Nodo<T>* NodoAlContenido(Nodo<T>*& raizAux, Contenido* post){if(raizAux==NULL) return nodoAlContenido(raiz, post);else return nodoAlContenido(raizAux,post);};
 };
