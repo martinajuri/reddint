@@ -26,18 +26,5 @@ class Nodo
             hijoIzq = NULL;
             dato = a;
         };
-    
-//     //setters       
-//     void setDato(T *a) { dato = a; };    
-//     void setHijoDer(Nodo *n) { hijoDer = n; }; 
-//     void setHijoIzq(Nodo *n) { hijoIzq = n; }; 
-//     //getters
-//     T *getDato() { return dato; };       
-//     Nodo *getHijoDer() { return hijoDer; };
-//     Nodo *getHijoIzq() { return hijoIzq; };
-    
-//     //devuelve si el nodo no tiene siguiente nodo apuntado
-//     bool isDerEmpty() { return hijoDer == NULL; }
-//     bool isIzqEmpty() { return hijoIzq == NULL; }
 };
 #endif

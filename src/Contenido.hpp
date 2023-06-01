@@ -13,7 +13,7 @@ using namespace std;
 
 class Contenido
 {
-    protected:
+    private:
         Fecha* fecha;
         Usuario* usuario;
         string cuerpo;
@@ -22,8 +22,8 @@ class Contenido
         Lista<Usuario*>* participantes;
         TipoDeContenido tipo;
 
-
     public:
+        //para comentarios y respuestas (el titulo se asigna mas adelante cuando se implemente en el arbol)
         Contenido(Fecha* fecha, Usuario* usuario, string cuerpo, TipoDeContenido tipo)
         {
             this-> fecha = fecha;
@@ -32,6 +32,7 @@ class Contenido
             this->tipo = tipo;
             valoracion = 0;
         };
+        //para publicaciones
         Contenido(Fecha* fecha, Usuario* usuario,  string titulo, string cuerpo, TipoDeContenido tipo)
         {
             this->titulo = titulo;
@@ -60,5 +61,4 @@ class Contenido
         };
         void agregarParticipante(Usuario* participante){participantes->add(participante);}
 };
-
 #endif

@@ -28,18 +28,19 @@ template <class T> class  ArbolBinario
         void ordenarParticipaciones(Lista<Contenido*>* lista);
         void imprimirPublicaciones(Nodo<T>*& raizAux);
         void imprimirNivel(Nodo<T>* raizAux);
-
+        int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);
 
     public:
         ArbolBinario() { raiz = NULL; };
-        void crearContenido(){};
+
+        //Metodos de adicion
         void Responder(Contenido* postAComentar, Contenido* comentarioAResponder, Contenido* newRespuesta){responder(raiz, postAComentar, comentarioAResponder, newRespuesta); postAComentar->agregarParticipante(newRespuesta->getUsuario()); newRespuesta->setTitulo("Respuesta a: " + postAComentar->getTitulo());};
         void Comentar(Contenido* postAComentar, Contenido* newComentario){comentar(raiz, postAComentar, newComentario); postAComentar->agregarParticipante(newComentario->getUsuario());newComentario->setTitulo("Comentario a: " + postAComentar->getTitulo());}
         void Agregar(Contenido* newPost){agregar(raiz,newPost);}
+
         void Imprimir(){imprimir(raiz);};
         void ImprimirPublicacion(Contenido* post);
         void BorrarPost(Contenido* post){borrarPost(raiz, post);};
-        int participacionesDeUsuario(Lista<Usuario*>* lista, Usuario* user);
         Contenido* ComentarioMasVotado(Contenido* post);
         Usuario* UsuarioMasParticipativo(Contenido* post);
         void ImprimirParticipaciones(Usuario* user);

@@ -13,8 +13,8 @@ class Fecha
         int anio;
 
     public:
-        Fecha(int d, int m, int a) {
-            //validar fecha
+        Fecha(int d, int m, int a)
+        {
             dia = d;
             mes = m;
             anio = a;
@@ -23,24 +23,22 @@ class Fecha
         
         
         //Devuelve true si la fecha es mayor a la ingresada por parametro
-        bool esMayor(Fecha *otraFecha) {
-            if (anio > otraFecha->anio)
-                return true;
-            else if (anio < otraFecha->anio)
-                return false;
+        bool esMayor(Fecha *otraFecha)
+        {
+            if (anio > otraFecha->anio) return true;
+            else if (anio < otraFecha->anio) return false;
 
-            if (mes > otraFecha->mes)
-                return true;
-            else if (mes < otraFecha->mes)
-                return false;
+            if (mes > otraFecha->mes) return true;
+            else if (mes < otraFecha->mes) return false;
 
-            if (dia > otraFecha->dia)
-                return true;
-            else
-                return false;
+            if (dia > otraFecha->dia) return true;
+            else return false;
         }
 
-        void imprimir(){cout<<dia<<"/"<<mes<<"/"<<anio<<endl;}
+        void imprimir()
+        {
+            cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
+        }
 };
 
 #endif

@@ -16,7 +16,6 @@ template <class T> void ArbolBinario<T>:: agregar(Nodo<T>*& raizAux, Contenido* 
     else
     {
        agregar(raizAux->hijoDer, newPost);
-       //newPost->usuario->agregarParticipacion(newPost);
     }    
 }
 
@@ -52,8 +51,8 @@ template <class T> void ArbolBinario<T>:: responder(Nodo<T>*& raizAux, Contenido
 template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido* post)
 {
     if(raizAux->dato == post){
-       if(raizAux->hijoDer == NULL) delete raizAux;
-       else
+       if(raizAux->hijoDer == NULL) {delete raizAux; raizAux = NULL;}
+       else //Si no es la ultima publicacion, haces un swap de punteros
        {
             nodoAux = raizAux;
             raizAux = nodoAux->hijoDer;
@@ -66,7 +65,6 @@ template <class T> void ArbolBinario<T>::borrarPost(Nodo<T>*& raizAux ,Contenido
     else{
         borrarPost(raizAux->hijoDer, post);
     }
-    
 }
 
 // Imprime el arbol en orden rid
@@ -81,7 +79,7 @@ template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
     }
 }
 
-// Imprime 
+// Imprime todos los hijos derechos del parametro
 template <class T> void ArbolBinario<T>:: imprimirNivel(Nodo<T>* raizAux)
 {
     if (raizAux != NULL) 
@@ -141,7 +139,7 @@ template <class T> int ArbolBinario<T>::participacionesDeUsuario(Lista<Usuario*>
     else return 0;
 }
 
-//Devuelve las participaciones de un usuario.
+//Devuelve las participaciones de un usuario (sirve para panel de usuario).
 template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenido>*& raizAux, Usuario* user, Lista<Contenido*>* lista)
 {
     if (user != NULL && raizAux != NULL)
@@ -189,18 +187,7 @@ template <class T> Contenido* ArbolBinario<T>::masVotado(Contenido* contenido1, 
 //Devuelve un puntero al nodo que contiene el contenido. Devuelve NULL si la publicacion no se encuentra
 template <class T> Nodo<T>* ArbolBinario<T>::nodoAlContenido(Nodo<T>*& raizAux, Contenido* post)
 {
-    // if(raizAux->dato == post)
-    // {
-    //     return raizAux;
-    // }
-    // else if(raizAux->hijoDer==NULL||raizAux->hijoIzq==NULL)
-    // {
-    //     return NULL;
-    // }
-    // else{
 
-    //    return nodoAlContenido(raizAux->hijoDer, post);
-    // }
     if (raizAux == NULL) {
         return NULL;
     }
@@ -298,7 +285,7 @@ template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
     listaDeParticipaciones->imprimirL();
     delete listaDeParticipaciones;
 }
-
+//metodo de busqueda para el main
 template <class T> Contenido* ArbolBinario<T>::buscarContenidoPorNumero(int p, int c, int r)
 {
     nodoAux = raiz;

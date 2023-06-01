@@ -71,67 +71,7 @@ int main(){
       }
     }
 };
-   /*
-        cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
-        switch (opcion)
-        {
-        case 'A':
-            reddint->Imprimir();
-            break;
-        case 'B':
-            publicacion = ingresarPublicacion(fecha, usuario);
-            cout << "Publicando..." << endl;
-            reddint->Agregar(publicacion);
-            cout << "Publicado" << endl;
-            break;
-        case 'C':
-            comentario = ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO);
-            reddint->Comentar(publicacion, comentario);
-            break;
-        case 'D':
-            respuesta = ingresarContenido(fecha, usuario, TipoDeContenido::RESPUESTA);
-            cout << "Publicando..." << endl;
-            reddint->Responder(publicacion, comentario, respuesta);
-            cout << "Publicado" << endl;
-            break;
-        case 'E':
-            fecha = ingresarFecha();
-            cout << "Fecha cambiada a: ";
-            fecha->imprimir();
-            break;
-        case 'F':
-            usuario = ingresarUsuario();
-            cout << "Usuario cambiado a: ";
-            usuario->imprimir();
-            break;
-        case 'G':
-            reddint->ImprimirPublicacion(publicacion);
-            break;
-        case 'H':
-            reddint->ImprimirParticipaciones(usuario);
-            break;
-        case 'I':
-            elegirContenido(publicacion, comentario, respuesta)->meGusta();
-            cout << "Me gusta realizado" << endl;
-            break;
-        case 'J':
-            elegirContenido(publicacion, comentario, respuesta)->nomeGusta();
-            cout << "No me gusta realizado" << endl;
-            break;
-        case 'K':
-            reddint->BorrarPost(publicacion);
-            cout << "Publicacion eliminada" << endl;
-            break;
-        case 'X':
-            exit(0);
-            break;
-        default:
-            break;
-        }
-
-    */
-
-
+   
 Fecha* ingresarFecha()
 {
     int d, m, a;

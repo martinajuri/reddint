@@ -1,6 +1,6 @@
 #ifndef TIPODECONTENIDO_HPP
 #define TIPODECONTENIDO_HPP
-
+//no se usa
 enum TipoDeContenido {
     PUBLICACION,
     COMENTARIO,
