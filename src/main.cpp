@@ -302,7 +302,7 @@ ArbolBinario<Contenido>* crearSubredditMusica()
     return r_musica;
 }
 void bienvenida(){
-    cout << "Bienvenido a Reddin´t" << endl ;
+    cout << "Bienvenido a Reddin't" << endl ;
     cout<<dye::light_red(R"(                                                                                                    
                                                                                                         
                                                                                                     
