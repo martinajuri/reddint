@@ -63,11 +63,11 @@ int main(){
         case 'B':
             panelDeUsuario(usuarioActual, reddint);
             break;
-        case 'X':
-            exit(0);
-            break;
         case 'C':
             fechaActual = ingresarFecha();
+            break;
+        case 'X':
+            exit(0);
             break;
       default:
         break;
@@ -87,7 +87,7 @@ Fecha* ingresarFecha()
         cout << "Año: ";
         cin >> a;
 
-        if(d <= 31 && d >= 1 && m <= 12 && m >= 1){
+        if(d <= 31 && d >= 1 && m <= 12 && m >= 1 && a >= 2000){
             valido = true;
         }else{
             cout << "Fecha invalida, ingrese una fecha valida!!!" << endl << endl;
