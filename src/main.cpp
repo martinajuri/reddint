@@ -4,7 +4,7 @@
 #include "Contenido.hpp"
 #include "util\ArbolBinario.cpp"
 #include "color.hpp"
-
+#include "util\Lista.hpp"
 using namespace std;
 
 Fecha* ingresarFecha();
@@ -302,7 +302,6 @@ ArbolBinario<Contenido>* crearSubredditMusica()
     return r_musica;
 }
 void bienvenida(){
-    cout << "Bienvenido a Reddin't" << endl ;
     cout<<dye::light_red(R"(                                                                                                    
                                                                                                         
                                                                                                     
@@ -333,5 +332,6 @@ void bienvenida(){
                            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.                                     
                                    /@@@@@@@@@@@@@@@@@&                                              
                                                                                                     
-                                                                                                       )")<<endl;
+                                                                                                       )")<<endl;                                                                                                     
+cout << "\n                                 Bienvenido a Reddin't" << endl ;
 }
