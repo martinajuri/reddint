@@ -303,6 +303,10 @@ template <class T> Contenido* ArbolBinario<T>::buscarContenidoPorNumero(int p, i
     {
         nodoAux = nodoAux->hijoDer;  
     }
-    return nodoAux->dato;
+    if(nodoAux->dato == NULL){
+        cout << "No se encontro el contenido solicitado \n";
+        return NULL;
+    }else{return nodoAux->dato;}
+    
 }
 #endif

@@ -54,7 +54,7 @@ class Contenido
         Usuario* getUsuario(){return usuario;};
         Lista<Usuario*>* getParticipantes(){return participantes;}
         void imprimir()
-        {
+        {   
             cout<<dye::purple(titulo) <<endl<<endl<< cuerpo<<endl<<endl<<"Valoracion: "<<valoracion<<endl<< "Autor: ";
             usuario->imprimir();
             fecha->imprimir();

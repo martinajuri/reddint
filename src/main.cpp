@@ -198,7 +198,11 @@ void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, 
     int c=0, r=0;
     cout <<"\n";
     Contenido * publicacion = arbol->buscarContenidoPorNumero(p,0,0);
+    if(publicacion == NULL){
+        return;
+    }else{
     publicacion->imprimir();
+    }
     cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
     arbol->ImprimirNivel(publicacion);
     char opcion;
