@@ -81,6 +81,18 @@ template <class T> void ArbolBinario<T>:: imprimir(Nodo<T>* raizAux)
     }
 }
 
+// Imprime 
+template <class T> void ArbolBinario<T>:: imprimirNivel(Nodo<T>* raizAux)
+{
+    if (raizAux != NULL) 
+    {
+        Contenido* contAux = raizAux->dato;
+        contAux->imprimir();
+        cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
+        imprimirNivel(raizAux->hijoDer);
+    }
+}
+
 //Devuelve un puntero al comentario mas votado.
 template <class T> Contenido* ArbolBinario<T>::comentarioMasVotado(Nodo<T>*& raizAux)
 {
@@ -146,29 +158,6 @@ template <class T> void ArbolBinario<T>::participacionesPorUsuario(Nodo<Contenid
 //Ordena la lista por orden de publicacion
 template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido*>* lista)
 {
-
-    //         Contenido *primero = lista->cabeza();
-    //         Contenido *nuevo = lista->cabeza();
-    //         Contenido *aux;
-    //         NodoL<Contenido*> *mov = lista->getCzo()->get_next();
-            
-    // if(lista != NULL){
-    //     if(lista->size() > 1){
-    //         int MAX = lista->size();
-    //         for(int i = 1; i<MAX; i++){
-    //             if(mov->get_dato()->getFecha()->esMayor(nuevo->getFecha())){
-    //                 nuevo = mov->get_dato();
-    //             }
-    //             mov = mov->get_next();
-    //         }
-    //         aux = primero;
-    //         primero = nuevo;
-    //         nuevo = aux;
-    //         ordenarParticipaciones(lista->resto());
-
-
-    //     }
-    // }
     if (lista != NULL && lista->size() > 1) {
         NodoL<Contenido*>* primero = lista->getCzo();
         NodoL<Contenido*>* nuevo = primero;
@@ -185,7 +174,6 @@ template <class T> void ArbolBinario<T>:: ordenarParticipaciones(Lista<Contenido
         primero->set_dato(nuevo->get_dato());
         nuevo->set_dato(aux);
         ordenarParticipaciones(lista->resto());
-
     }
 }
 
@@ -224,6 +212,7 @@ template <class T> Contenido* ArbolBinario<T>::ComentarioMasVotado(Contenido* po
         cout << "No fue posible encontrar la publicacion"<<endl;
         return NULL;
     }
+    else if (nodoAux->hijoIzq==NULL) return NULL;
     return comentarioMasVotado(nodoAux->hijoIzq);   
 }
 
@@ -236,7 +225,10 @@ template <class T> Usuario* ArbolBinario<T>::UsuarioMasParticipativo(Contenido* 
         cout << "No fue posible encontrar la publicacion"<<endl;
         return NULL;
     }
-    return usuarioMasParticipativo(nodoAux->dato->getParticipantes());
+    Usuario* usuario = usuarioMasParticipativo(nodoAux->dato->getParticipantes());
+    if(usuario!=NULL) return usuario;
+    else return NULL;
+
 };
 
 //Imprime una publicacion con su comentario mas votado, su usuario mas participativo y valoracion promedio??
@@ -247,19 +239,36 @@ template <class T> void ArbolBinario<T>::ImprimirPublicacion(Contenido* post)
         nodoAux = nodoAlContenido(raiz,post);
         if(nodoAux!=NULL)
         {
+            cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
             post->imprimir();
-            cout << "Comentario más votado: "<<endl; 
-            ComentarioMasVotado(post)->imprimir();
-            cout<< endl;
-            cout << "Usuario más participativo: ";
-            UsuarioMasParticipativo(post)->imprimir();
+            cout << "\n-> Usuario más participativo: ";
+            Usuario* usuario = UsuarioMasParticipativo(post);
+            if(usuario!=NULL) usuario->imprimir();
+            else post->getUsuario()->imprimir();
             cout << endl;
+            cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
+            cout << "-> Más votado: \n"; 
+            Contenido* contenido = ComentarioMasVotado(post);
+            if(contenido!=NULL) contenido->imprimir();
+            else cout << "No hay \n";
+            cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
         }
         else cout << "No existe esa publicacion" << endl;
-
-    } else cout << "No existe esa publicacion" << endl;
+    } 
+    else cout << "No existe esa publicacion" << endl;
 }
 
+//Imprime las publicaciones del arbol en formato ImprimirPublicacion
+template <class T> void ArbolBinario<T>::imprimirPublicaciones(Nodo<T>*& raizAux)
+{
+    if(raizAux!=NULL){
+        ImprimirPublicacion(raizAux->dato);
+        imprimirPublicaciones(raizAux->hijoDer);
+    }
+
+}
+
+//Metodo publico: imprime publicacion
 template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
 {
     Lista<Contenido*>* listaDeParticipaciones = new Lista<Contenido*>();
@@ -267,5 +276,25 @@ template <class T> void ArbolBinario<T>::ImprimirParticipaciones(Usuario* user)
     ordenarParticipaciones(listaDeParticipaciones);
     listaDeParticipaciones->imprimirL();
     delete listaDeParticipaciones;
+}
+
+template <class T> Contenido* ArbolBinario<T>::buscarContenidoPorNumero(int p, int c, int r)
+{
+    nodoAux = raiz;
+    for (int i = 1; i < p; i++)
+    {
+        nodoAux = nodoAux->hijoDer;  
+    }
+    if(c!=0)nodoAux = nodoAux->hijoIzq; 
+    for (int j = 1; j < c; j++)
+    {
+        nodoAux = nodoAux->hijoDer;  
+    }
+    if(r!=0)nodoAux = nodoAux->hijoIzq; 
+    for (int k = 1; k < r; k++)
+    {
+        nodoAux = nodoAux->hijoDer;  
+    }
+    return nodoAux->dato;
 }
 #endif

@@ -11,10 +11,12 @@ Fecha* ingresarFecha();
 Usuario* ingresarUsuario();
 Contenido* ingresarPublicacion(Fecha* fecha, Usuario* usuario);
 Contenido* ingresarContenido(Fecha* fecha, Usuario* usuario, TipoDeContenido tipo);
-Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Contenido* respuesta);
 void bienvenida();
 void panelDeUsuario(Usuario *&usuario, ArbolBinario<Contenido> *arbol);
 ArbolBinario<Contenido>* crearSubredditMusica();
+void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fecha* fecha);
+void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, Fecha* fecha);
+void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usuario, Fecha* fecha);
 
 int main(){
 
@@ -29,19 +31,22 @@ int main(){
     Usuario* usuarioActual = ingresarUsuario();
     cout << "Ingresa la fecha de hoy" << endl;
     Fecha* fechaActual = ingresarFecha();
+    Contenido* publicacionActual;
+    Contenido* comentarioActual;
+    Contenido* respuestaActual;
 
     //menu1 - que subreddint
-    char opcion1;
+    char opcion1; 
     cout << "¿A que subreddin't quieres acceder? \n A) Subreddint de musica \n B) Subreddint vacio \n";
     cin >> opcion1;
     switch(toupper(opcion1))
     {
         case 'A':
-        reddint = subreddint_musica;
-        break;
+            reddint = subreddint_musica;
+            break;
         case 'B':
-        reddint = subreddint_vacio;
-        break;
+            reddint = subreddint_vacio;
+            break;
     }
 
     //menu2 - Panel Principal
@@ -51,7 +56,7 @@ int main(){
       switch (toupper(opcion))
       {
         case 'A':
-            //panelPublicaciones
+            panelDePublicaciones(reddint, usuarioActual, fechaActual);
             break;
         case 'B':
             panelDeUsuario(usuarioActual, reddint);
@@ -64,66 +69,66 @@ int main(){
       }
     }
 };
-   
-    //     cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
-    //     switch (opcion)
-    //     {
-    //     case 'A':
-    //         reddint->Imprimir();
-    //         break;
-    //     case 'B':
-    //         publicacion = ingresarPublicacion(fecha, usuario);
-    //         cout << "Publicando..." << endl;
-    //         reddint->Agregar(publicacion);
-    //         cout << "Publicado" << endl;
-    //         break;
-    //     case 'C':
-    //         comentario = ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO);
-    //         reddint->Comentar(publicacion, comentario);
-    //         break;
-    //     case 'D':
-    //         respuesta = ingresarContenido(fecha, usuario, TipoDeContenido::RESPUESTA);
-    //         cout << "Publicando..." << endl;
-    //         reddint->Responder(publicacion, comentario, respuesta);
-    //         cout << "Publicado" << endl;
-    //         break;
-    //     case 'E':
-    //         fecha = ingresarFecha();
-    //         cout << "Fecha cambiada a: ";
-    //         fecha->imprimir();
-    //         break;
-    //     case 'F':
-    //         usuario = ingresarUsuario();
-    //         cout << "Usuario cambiado a: ";
-    //         usuario->imprimir();
-    //         break;
-    //     case 'G':
-    //         reddint->ImprimirPublicacion(publicacion);
-    //         break;
-    //     case 'H':
-    //         reddint->ImprimirParticipaciones(usuario);
-    //         break;
-    //     case 'I':
-    //         elegirContenido(publicacion, comentario, respuesta)->meGusta();
-    //         cout << "Me gusta realizado" << endl;
-    //         break;
-    //     case 'J':
-    //         elegirContenido(publicacion, comentario, respuesta)->nomeGusta();
-    //         cout << "No me gusta realizado" << endl;
-    //         break;
-    //     case 'K':
-    //         reddint->BorrarPost(publicacion);
-    //         cout << "Publicacion eliminada" << endl;
-    //         break;
-    //     case 'X':
-    //         exit(0);
-    //         break;
-    //     default:
-    //         break;
-    //     }
+   /*
+        cout << "Que quieres hacer?" << endl << "A) Ver muro" << endl << "B) Publicar" << endl << "C) Comentar" << endl << "D) Responder" << endl << "E) Seleccionar nueva fecha" << endl << "F) Cambiar de usuario"<< endl<<"G) Imprimir publicacion"<< endl << "H) Participaciones del Usuario" << endl << "I) Me gusta"<< endl <<"J) No me gusta"<<endl << "K) Borrar la ultima publicacion "<<endl<<"X) Salir"<<endl;
+        switch (opcion)
+        {
+        case 'A':
+            reddint->Imprimir();
+            break;
+        case 'B':
+            publicacion = ingresarPublicacion(fecha, usuario);
+            cout << "Publicando..." << endl;
+            reddint->Agregar(publicacion);
+            cout << "Publicado" << endl;
+            break;
+        case 'C':
+            comentario = ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO);
+            reddint->Comentar(publicacion, comentario);
+            break;
+        case 'D':
+            respuesta = ingresarContenido(fecha, usuario, TipoDeContenido::RESPUESTA);
+            cout << "Publicando..." << endl;
+            reddint->Responder(publicacion, comentario, respuesta);
+            cout << "Publicado" << endl;
+            break;
+        case 'E':
+            fecha = ingresarFecha();
+            cout << "Fecha cambiada a: ";
+            fecha->imprimir();
+            break;
+        case 'F':
+            usuario = ingresarUsuario();
+            cout << "Usuario cambiado a: ";
+            usuario->imprimir();
+            break;
+        case 'G':
+            reddint->ImprimirPublicacion(publicacion);
+            break;
+        case 'H':
+            reddint->ImprimirParticipaciones(usuario);
+            break;
+        case 'I':
+            elegirContenido(publicacion, comentario, respuesta)->meGusta();
+            cout << "Me gusta realizado" << endl;
+            break;
+        case 'J':
+            elegirContenido(publicacion, comentario, respuesta)->nomeGusta();
+            cout << "No me gusta realizado" << endl;
+            break;
+        case 'K':
+            reddint->BorrarPost(publicacion);
+            cout << "Publicacion eliminada" << endl;
+            break;
+        case 'X':
+            exit(0);
+            break;
+        default:
+            break;
+        }
 
-    // }
-// };
+    */
+
 
 Fecha* ingresarFecha()
 {
@@ -172,24 +177,6 @@ Contenido* ingresarContenido(Fecha* fecha, Usuario* usuario, TipoDeContenido tip
     return new Contenido(fecha, usuario, cuerpo, tipo);
 }
 
-Contenido* elegirContenido(Contenido* publicacion, Contenido* comentario, Contenido* respuesta){
-    char opcionContenido;
-    cout << "Que contenido quieres elegir? " << endl << "A) Ultima publicacion "<<endl<<"B) Ultimo comentario"<<endl<<"C) Ultima respuesta"<<endl;
-    cin >> opcionContenido;
-    switch (opcionContenido)
-    {
-    case 'A':
-        return publicacion;
-        break;
-    case 'B':
-        return comentario;
-        break;
-    default:
-        return respuesta;
-        break;
-    }
-}
-
 void panelDeUsuario(Usuario*& usuario, ArbolBinario<Contenido> *arbol){
 
     cout << "Entrando al panel de usuario..." << endl;
@@ -213,6 +200,106 @@ void panelDeUsuario(Usuario*& usuario, ArbolBinario<Contenido> *arbol){
     }
 }
 
+void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fecha* fecha)
+{
+    int p; //numero seleccionado de publicacion, comentario y respuesta
+    arbol->ImprimirPublicaciones();
+    char opcion;
+    cout << "Que quieres hacer? \n A) Publicar \n B) Ir a una publicacion \n";
+    cin >>opcion;
+    switch (toupper(opcion))
+    {
+    case 'A':
+        cout << "Publicando..." << endl;
+        arbol->Agregar(ingresarPublicacion(fecha, usuario));
+        cout << "Publicado" << endl;
+        break;
+    case 'B':
+        cout << "Ingrese el numero: ";
+        cin >> p;
+        panelDeComentarios(arbol, p, usuario, fecha);
+        break;
+    default:
+        break;
+    }
+}
+
+void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, Fecha* fecha)
+{
+    int c=0, r=0;
+    cout <<"\n";
+    Contenido * publicacion = arbol->buscarContenidoPorNumero(p,0,0);
+    publicacion->imprimir();
+    cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
+    arbol->ImprimirNivel(publicacion);
+    char opcion;
+    cout << "Que quieres hacer? \n A) Comentar  \n B) Dar me gusta a la publicacion \n C) Dar no me gusta a la publicacion\n D) Elegir comentario\n";
+    cin >>opcion;
+    switch (toupper(opcion))
+    {
+    case 'A':
+        cout << "Comentando..." << endl;
+        arbol->Comentar(publicacion,ingresarContenido(fecha, usuario, TipoDeContenido::COMENTARIO));
+        cout << "Comentado" << endl;
+        break;
+    case 'B':
+        publicacion->meGusta();
+        break;
+    case 'C':
+        publicacion->nomeGusta();
+        break;
+    case 'D':
+        cout << "Ingrese el numero: ";
+        cin >> c;
+        panelDeRespuestas(arbol, p, c, usuario, fecha);
+        break;             
+    default:
+        break;
+    }
+    
+}
+void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usuario, Fecha* fecha)
+{
+    char opcion;
+    int r=0;
+    Contenido * publicacion = arbol->buscarContenidoPorNumero(p,0,0);
+    Contenido * comentario = arbol->buscarContenidoPorNumero(p,c,0);
+    Contenido *respuesta = arbol->buscarContenidoPorNumero(p,c,r);
+    comentario = arbol->buscarContenidoPorNumero(p,c,0);
+    comentario->imprimir();
+    cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
+    arbol->ImprimirNivel(comentario);
+    cout << "Que quieres hacer? \n A) Me gusta \n B) No me gusta \n C) Responder \n D)Ingresar a una Respuesta \n";
+    cin >> opcion;
+    switch (opcion)
+    {
+    case 'A':
+        comentario->meGusta();
+        break;
+    case 'B':
+        comentario->nomeGusta();
+        break;
+    case 'C':
+        cout << "Respondiendo..." << endl;
+        arbol->Responder(publicacion,comentario, ingresarContenido(fecha, usuario, TipoDeContenido::RESPUESTA));
+        cout << "Respondido" << endl;
+        break;
+    case 'D':
+        cout << "Ingrese el numero de respuesta: ";
+        cin >> r;
+        respuesta = arbol->buscarContenidoPorNumero(p,c,r);
+        respuesta->imprimir();
+        cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
+        cout << "Que quieres hacer? \n A) Me gusta \n B) No me gusta\n";
+        cin >> opcion;
+        if(toupper(opcion)=='A') respuesta->meGusta();
+        else if (toupper(opcion)=='B')respuesta->nomeGusta();
+        break;
+    default:
+        break;
+    }
+    
+}
 ArbolBinario<Contenido>* crearSubredditMusica()
 {   
     ArbolBinario<Contenido>* r_musica = new ArbolBinario<Contenido>();
