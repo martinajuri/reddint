@@ -17,6 +17,7 @@ ArbolBinario<Contenido>* crearSubredditMusica();
 void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fecha* fecha);
 void panelDeComentarios(ArbolBinario<Contenido>* arbol,int p ,Usuario* usuario, Fecha* fecha);
 void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usuario, Fecha* fecha);
+Usuario* verificarUsuario(Usuario* usuario, Lista<Usuario>* listaUsuarios);
 
 int main(){
 
@@ -24,6 +25,7 @@ int main(){
     ArbolBinario<Contenido>* subreddint_vacio = new ArbolBinario<Contenido>();
     ArbolBinario<Contenido>* subreddint_musica = crearSubredditMusica();
     ArbolBinario<Contenido>* reddint;
+    Lista<Usuario*> *listaDeUsuarios = new Lista<Usuario*>();
     char opcion;
     //Antemenu
     cout<<dye::aqua("Inicia sesion")<<endl;
@@ -73,7 +75,18 @@ int main(){
         break;
       }
     }
-};
+};// Fin del main
+
+
+Usuario* verificarUsuario(Usuario *usuario, Lista<Usuario> *listaUsuarios){
+
+    if(!listaUsuarios->esvacia()){
+        if(usuario->getNombre() == listaUsuarios->cabeza().getNombre()){return usuario;} //devuelve true si el usuario ya existe en la lista
+        else{return verificarUsuario(usuario, listaUsuarios->resto());} //sino sigue recorriendo la lista
+    }
+    else{return NULL;}
+
+}
    
 Fecha* ingresarFecha()
 {
@@ -138,6 +151,7 @@ void panelDeUsuario(Usuario*& usuario, ArbolBinario<Contenido> *arbol){
         arbol->ImprimirParticipaciones(usuario);
         break;
     case 'B':
+        
         usuario = ingresarUsuario();
         break;  
     default:

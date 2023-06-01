@@ -17,5 +17,6 @@ class Usuario
         Usuario(){};
         
         void imprimir(){ cout << nombre<<endl;};
+        string getNombre(){return nombre;};
 };
 #endif
