@@ -74,7 +74,6 @@ int main(){
     }
 };// Fin del main
 
-
 Usuario* verificarUsuario(string usuario, Lista<Usuario*> *listaUsuarios){
 
     if(!listaUsuarios->esvacia()){
@@ -167,7 +166,7 @@ void panelDeUsuario(Usuario*& usuario, ArbolBinario<Contenido> *arbol){
 
 void panelDePublicaciones(ArbolBinario<Contenido>* arbol, Usuario* usuario, Fecha* fecha)
 {
-    int p; //numero seleccionado de publicacion, comentario y respuesta
+    int p; //numero seleccionado de publicacion
     arbol->ImprimirPublicaciones();
     char opcion;
     cout << dye::aqua("Panel de Publicaciones\nQue quieres hacer? \n A) Publicar \n B) Ir a una publicacion \n Presione cualquier letra para volver a inicio \n");
@@ -240,8 +239,8 @@ void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usu
     int r=0;
     Contenido * publicacion = arbol->buscarContenidoPorNumero(p,0,0);
     Contenido * comentario = arbol->buscarContenidoPorNumero(p,c,0);
-    Contenido *respuesta = arbol->buscarContenidoPorNumero(p,c,r);
-    comentario = arbol->buscarContenidoPorNumero(p,c,0);
+    if(comentario == NULL){return;}
+    Contenido *respuesta;
     comentario->imprimir();
     cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
     arbol->ImprimirNivel(comentario);
@@ -265,6 +264,7 @@ void panelDeRespuestas(ArbolBinario<Contenido>* arbol,int p, int c ,Usuario* usu
         cout << "Ingrese el numero de respuesta: ";
         cin >> r;
         respuesta = arbol->buscarContenidoPorNumero(p,c,r);
+        if(respuesta == NULL){return;}
         respuesta->imprimir();
         cout<<"------------------------------------------------------------------------------------------------------------------------\n";  
         cout << dye::aqua("Valorar respuesta \n A) Me gusta \n B) No me gusta\n Presione cualquier letra para volver a inicio \n");
@@ -286,14 +286,14 @@ ArbolBinario<Contenido>* crearSubredditMusica()
     Fecha* fecha3 = new Fecha(22,3,2023);
     Fecha* fecha4 = new Fecha(1,4,2023);
 
-    Usuario* usuario1 = new Usuario("ImagineDragons4Ever"); listaDeUsuarios->add(usuario1);
+    Usuario* usuario1 = new Usuario("ID4Ever"); listaDeUsuarios->add(usuario1);
     Usuario* usuario2 = new Usuario("LimitlessWanderer"); listaDeUsuarios->add(usuario2);
     Usuario* usuario3 = new Usuario("AguaConGasMono"); listaDeUsuarios->add(usuario3);
     Usuario* usuario4 = new Usuario("LasJeringasDeLaAbuela"); listaDeUsuarios->add(usuario4);
     Usuario* usuario5 = new Usuario("MeGustaMozaBacheyBetoVeni"); listaDeUsuarios->add(usuario5);
     Usuario* usuario6 = new Usuario("VTxSAR38Tr1"); listaDeUsuarios->add(usuario6);
-    Usuario* usuario7 = new Usuario("HeadphoneHelmet"); listaDeUsuarios->add(usuario7);
-    Usuario* usuario8 = new Usuario("TangoLover"); listaDeUsuarios->add(usuario8);
+    Usuario* usuario7 = new Usuario("Helmet"); listaDeUsuarios->add(usuario7);
+    Usuario* usuario8 = new Usuario("Tango"); listaDeUsuarios->add(usuario8);
     Usuario* usuario9 = new Usuario("TotallyNotACultLeader"); listaDeUsuarios->add(usuario9);
 
     Contenido* post1 = new Contenido(fecha1,usuario1,"Bandas parecidas a Imagine Dragons?","Desde que era pibe me gusto esa banda, pero nunca me gusto no poder conectar porque no se tan bien el ingles, alguno sabe que puedo escuchar que sea muy parecido?",TipoDeContenido::PUBLICACION); post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();post1->meGusta();
