@@ -22,7 +22,7 @@ class Fecha
         Fecha(){}
         
         
-        //Devuelve true si la fecha es mayor a la ingresada por parametro
+        //Devuelve true si la fecha es mas actual a la ingresada por parametro
         bool esMayor(Fecha *otraFecha)
         {
             if (anio > otraFecha->anio) return true;
